@@ -4,5 +4,5 @@ class Festival < ApplicationRecord
     has_many :users, through: :planners
     has_many :visits, dependent: :destroy
     has_many :users, through: :visits
-    
+
 end
