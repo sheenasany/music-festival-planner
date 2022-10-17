@@ -4,7 +4,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_invalid
 before_action :set_planner, only: [:show, :update, :destroy]
 
 def index
-    planners = Planner.all
+    planners = Planner.where(user_id: current_user.id)
     render json: planners, status: :ok  
 end
 

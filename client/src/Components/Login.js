@@ -1,16 +1,16 @@
-import { useNavigate } from "react-router-dom";
-import React, { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
+import React, { useContext, useState } from "react";
 import { UserContext } from "../GlobalContext/UserProvider";
 
 function Login(){
     const [ user, setUser ] = useContext(UserContext); //wrapped in curly or square?
-
+    
     const [username, setUserName] = useState("")
     const [password, setPassword] = useState("")
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState()    
 
-    let navigate = useNavigate();
+    let history = useHistory();
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -29,7 +29,7 @@ function Login(){
             if (res.ok) {
                 res.json()
         .then(user => setUser(user))
-        navigate.push('/');
+        history.push('/');
     } else {
         res.json()
         .then(json => setError(json.error))
