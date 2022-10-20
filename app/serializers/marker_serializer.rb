@@ -3,4 +3,12 @@ class MarkerSerializer < ActiveModel::Serializer
 
   has_many :festivals
 
+  def latitude
+    object.latitude.to_f
+  end
+
+  def longitude
+    object.longitude.to_f
+  end
+
 end

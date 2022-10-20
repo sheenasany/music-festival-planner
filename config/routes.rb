@@ -17,10 +17,6 @@ Rails.application.routes.draw do
  get '/addresses', to: "markers#show_address"
  get '/addresses/:id', to: "markers#show_individual_address"
 
- # custom route for festivals
- get '/fest_short_info', to: "festivals#fest_short_info"
- get '/fest_short_info/:id', to: "festivals#fest_one_short_info"
-
   # route to test your configuration
    get '*path',
     to: 'fallback#index',

@@ -5,7 +5,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :not_found
 # GET /markers
 def index
     # markers = Marker.where(user_id: current_user.id) //for authorize
-    render json: Marker.all, only: [:id, :city, :state], status: :ok
+    render json: Marker.all, status: :ok
 end
 
 # GET /markers/1

@@ -33,3 +33,14 @@ nav a:active {
   color: #114673;
   border-bottom: 2px solid #ffff;
 } */
+
+.marker-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.marker-btn img {
+  width: 20px;
+  height: 20px;
+}

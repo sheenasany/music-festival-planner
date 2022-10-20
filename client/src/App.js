@@ -1,15 +1,17 @@
 import React from 'react'
-// import { UserContext, UserProvider } from './GlobalContext/UserProvider';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import {FestivalsProvider} from './GlobalContext/FestivalsProvider';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
 import NavBar from './Components/NavBar';
-import Festival from './Components/FestivalList';
+import FestivalList from './Components/FestivalList';
 import Homepage from './Components/Homepage';
+import FestivalCard from './Components/FestivalCard';
+import FestivalPlanner from './Components/FestivalPlanner';
+import FestivalMap from './Components/FestivalMap';
 
 function App() {
 
-  // const { user, setUser } = useContext(UserContext);
 
   return (
     <div className="App">
@@ -26,9 +28,20 @@ function App() {
             <Route exact path="/login">
               <Login  />
             </Route>
+            <FestivalsProvider>
             <Route exact path="/festivals">
-            <Festival />
+            <FestivalList/>
             </Route>
+            <Route exact path="/festivals/:id">
+              <FestivalCard />
+            </Route>
+            <Route exact path="/planners">
+              <FestivalPlanner />
+            </Route>
+            <Route exact path="/map">
+              <FestivalMap />
+              </Route>
+            </FestivalsProvider>
         </Switch>
         </BrowserRouter>
     </div>

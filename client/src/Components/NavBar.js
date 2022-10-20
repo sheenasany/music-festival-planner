@@ -4,8 +4,10 @@ import React, { useContext } from "react";
 
 function NavBar() {
   let history = useHistory();
+  // calling the user context component 
   let [user, setUser] = useContext(UserContext);
 
+  // fetch to handle user session logout
   const handleLogout = () => {
     fetch("/logout", {
       method: "DELETE",
@@ -25,13 +27,22 @@ function NavBar() {
             Login
           </NavLink>
           <NavLink exact to="/signup">
-            Sign up
+            Signup
+          </NavLink>
+          <NavLink exact to="/festivals">
+          Festivals
           </NavLink>
         </div>
       ) : (
         <div>
           <NavLink exact to="/">
             Home
+          </NavLink>
+          <NavLink exact to="/festivals">
+            Festivals
+          </NavLink>
+          <NavLink exact to="/planners">
+            Festival Planner
           </NavLink>
           <NavLink onClick={handleLogout} exact to="/">
             Logout

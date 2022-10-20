@@ -16,8 +16,9 @@ end
 
 #GET /fest_short_info
 def fest_short_info
+    # binding.pry
     festivals = Festival.all
-    render json: festivals, serializer: FestivalInfoSerializer, status: :ok
+    render json: festivals, serializer: FestivalMarkerSerializer, status: :ok
 end
 
 # GET /fest_short_info/:id
