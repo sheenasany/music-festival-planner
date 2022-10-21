@@ -7,7 +7,7 @@ function FestivalPlanner(){
             <h2>List of chosen Festivals and created Planners go here</h2>
             <div>
                 Planner goes here
-                <PlannerForm />
+                {/* <PlannerForm /> */}
             </div>
         </div>
     )

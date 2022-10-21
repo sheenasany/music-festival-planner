@@ -62,6 +62,10 @@ function Login(){
                  />  
                  <br/>
                 <button className="btn" type="submit">Login</button>
+                <div>
+                    <p>Not registered?</p>
+                    <a href="/signup">Sign Up</a>
+                </div>
             </form>
 
         </div>

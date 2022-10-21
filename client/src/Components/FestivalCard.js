@@ -4,10 +4,11 @@ import { UserContext } from '../GlobalContext/UserProvider';
 
 function FestivalCard() {
 
-    // useParams allows the use of the festival's id
+    // useParams allows the use of the festival's id in fetch request
     let {id} = useParams()
     const [festInfo, setFestInfo] = useState("");
     let [user, setUser] = useContext(UserContext);
+    const [newPlanner, setNewPlanner] = useState({})
 
     // fetch for individual festival 
     useEffect(() => {
@@ -18,8 +19,9 @@ function FestivalCard() {
 
     let history = useHistory()
 
-    function handleAddPlanner(){
-        fetch('/planners', {
+    const handleAddPlanner = async() => {
+       
+        const res = await fetch('/planners', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -30,11 +32,20 @@ function FestivalCard() {
                 lodging: "",
                 friends_attending: "",
                 additional_notes: "",
-                festival_id: festInfo.id ,
+                festival_id: festInfo.id,
                 user_id: user.id,
             })
         })
-        history.push('/planners')
+        const data = await res.json()
+
+        const redirect = (data) => {
+            history.push(`/planners/${data.id}`)
+            // setNewPlanner(data)
+        }
+
+        redirect(data)
+        // .then(res => res.json())
+        // .then(data => setNewPlanner(data))
     }
 
     return(
@@ -49,7 +60,9 @@ function FestivalCard() {
             <p>Average Price Range : ${festInfo.average_ticket_price}</p>
             <a href={festInfo.link} target="_blank">Festival URL</a>
             <p>Genre : {festInfo.genre}</p>
-            <button onClick={handleAddPlanner}>Add to Planner</button>
+            {user ? 
+                <button onClick={handleAddPlanner}>Add to Planner</button> : 
+                <div>Wanna add this to your planner? <a href="/login">Log In</a></div>}
             </div>
             : null}
         </div>

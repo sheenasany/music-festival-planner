@@ -9,6 +9,7 @@ import Homepage from './Components/Homepage';
 import FestivalCard from './Components/FestivalCard';
 import FestivalPlanner from './Components/FestivalPlanner';
 import FestivalMap from './Components/FestivalMap';
+import PlannerForm from './Components/PlannerForm';
 
 function App() {
 
@@ -40,6 +41,9 @@ function App() {
             </Route>
             <Route exact path="/map">
               <FestivalMap />
+              </Route>
+              <Route exact path="/planners/:id">
+                <PlannerForm />
               </Route>
             </FestivalsProvider>
         </Switch>

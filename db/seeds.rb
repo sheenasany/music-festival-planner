@@ -15,8 +15,8 @@ m5 = Marker.create(city: "Las Vegas", state: "Nevada", latitude: "36.169941", lo
 m6 = Marker.create(city: "Austin", state: "Texas", latitude: "30.2711286", longitude: "-97.7436995")
 m7 = Marker.create(city: "Live Oak", state: "Florida", latitude: "30.2949457", longitude: "-82.98402")
 m8 = Marker.create(city: "Orlando", state: "Florida", latitude: "40.741895", longitude: "-73.989308")
-# m9 = Marker.create(city: "Salt Lake City", state: "Utah", latitude: "40.7596198", longitude: "-111.8867975")
-# m10 = Marker.create(city: "Portland", state: "Oregon", latitude: "45.5202471", longitude: "-122.674194")
+m9 = Marker.create(city: "Seattle", state: "Washington", latitude: "47.6038321", longitude: "-122.330062")
+m10 = Marker.create(city: "Tucson", state: "Arizona", latitude: "32.2228765", longitude: "-110.9748477")
 
 puts "Creating festivals... 🎸"
 
@@ -28,8 +28,8 @@ f5 = Festival.create(name:"When We Were Young", date: "October 22-29, 2022", lin
 f6 = Festival.create(name:"Levitation", date: "October 27-30, 2022", lineup_poster: "https://cdn.shopify.com/s/files/1/1366/5653/files/GIF_SMALL_-_LEVITATION-2022-lineup-1000pxW_9f6ca060-ae41-423b-aa85-e3cd8a1a2d65.gif?v=1663261388", average_attendance: "4,000", average_ticket_price: 400, link: "https://levitation.fm/", genre: "Rock", has_camping: false, marker_id: m6.id)
 f7 = Festival.create(name:"Suwannee Hulaween", date: "October 27-30, 2022", lineup_poster: "https://edm.com/.image/t_share/MTg5OTQ0NTM4MzYwNDU2Mjg1/hulaween-2022-artwork.png", average_attendance: "20,000", average_ticket_price: 470, link: "https://suwanneehulaween.com/", genre: "Rock", has_camping: true, marker_id: m7.id)
 f8 = Festival.create(name:"Electric Daisy Carnival", date: "Novemeber 11-13, 2022", lineup_poster: "https://d3vhc53cl8e8km.cloudfront.net/hello-staging/wp-content/uploads/sites/44/2022/10/04085159/edco_2022_mk_lu_soc_lubd_1080x1350_r02.png", average_attendance: "225,000", average_ticket_price: 250, link: "https://orlando.electricdaisycarnival.com/", genre: "Electronic", has_camping: false, marker_id: m8.id)
-f9 = Festival.create(name:"Electric Daisy Carnival", date: "Novemeber 11-13, 2022", lineup_poster: "https://d3vhc53cl8e8km.cloudfront.net/hello-staging/wp-content/uploads/sites/44/2022/10/04085159/edco_2022_mk_lu_soc_lubd_1080x1350_r02.png", average_attendance: "225,000", average_ticket_price: 250, link: "https://orlando.electricdaisycarnival.com/", genre: "Electronic", has_camping: false, marker_id: m8.id)
-f10 = Festival.create(name:"Electric Daisy Carnival", date: "Novemeber 11-13, 2022", lineup_poster: "https://d3vhc53cl8e8km.cloudfront.net/hello-staging/wp-content/uploads/sites/44/2022/10/04085159/edco_2022_mk_lu_soc_lubd_1080x1350_r02.png", average_attendance: "225,000", average_ticket_price: 250, link: "https://orlando.electricdaisycarnival.com/", genre: "Electronic", has_camping: false, marker_id: m8.id)
+f9 = Festival.create(name:"Freakout Festival", date: "Novemeber 10-13, 2022", lineup_poster: "https://www.strangertickets.com/imager/b/big/130128446/d391/FOF_2022_-_Poster.png", average_attendance: "40,000", average_ticket_price: 110, link: "https://www.the-freakout.com/index.html", genre: "Rock", has_camping: false, marker_id: m9.id)
+f10 = Festival.create(name:"Dusk Festival", date: "Novemeber 11, 2022", lineup_poster: "https://i0.wp.com/glassefactory.com/wp-content/uploads/2022/08/DUSK22-Square-Phase1.png?resize=960%2C1000&ssl=1", average_attendance: "15,000", average_ticket_price: 100, link: "https://duskmusicfestival.com/", genre: "Electronic", has_camping: false, marker_id: m10.id)
 
 puts "Creating users... 👥"
 

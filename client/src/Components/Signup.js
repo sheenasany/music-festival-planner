@@ -92,7 +92,7 @@ function Signup() {
       {error ? <div>{error}</div> : null}
       <div>
         <p>Already registered?</p>
-        <a href="/login">Log in</a>
+        <a href="/login">Log In</a>
       </div>
     </div>
   );

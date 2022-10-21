@@ -1,5 +1,6 @@
 class MarkersController < ApplicationController
 rescue_from ActiveRecord::RecordNotFound, with: :not_found
+skip_before_action :authorize, only: [:index, :show]
 # before_action :only_address
 
 # GET /markers
