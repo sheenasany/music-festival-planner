@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import {FestivalsProvider} from './GlobalContext/FestivalsProvider';
 import Login from './Components/Login';
@@ -7,12 +7,45 @@ import NavBar from './Components/NavBar';
 import FestivalList from './Components/FestivalList';
 import Homepage from './Components/Homepage';
 import FestivalCard from './Components/FestivalCard';
-import FestivalPlanner from './Components/FestivalPlanner';
 import FestivalMap from './Components/FestivalMap';
 import PlannerForm from './Components/PlannerForm';
+import PlannerList from './Components/PlannerList';
+import UpdatePlannerForm from './Components/UpdatePlannerForm';
 
 function App() {
 
+  const [planners, setPlanners] = useState([])
+  const [newPlan, setNewPlan] = useState()
+
+  useEffect(() => {
+    fetch('/planners')
+    .then(res => res.json())
+    .then(planners => setPlanners(planners))
+        // debugger
+    }, [])
+    // console.log(planners)
+
+    // function to add the new planner from festival list to planner list
+  const addNewPlanner = (newPlanner) => {
+    console.log(newPlanner)
+    setPlanners([...planners, newPlanner])
+}
+
+// function to update the planner in update planner form
+// const onUpdatePlanner = (updatedPlanner) => {
+//   const updatePlanner = planners.map(originalPlanner => originalPlanner.id === updatedPlanner.id ? updatedPlanner : originalPlanner)
+//   setPlanners(updatePlanner)
+// }
+
+// const onUpdatePlanner = (updatedPlanner) => {
+//   setPlanners(planners => planners.map(originalPlanner => {
+//     if (originalPlanner.id === updatedPlanner.id) {
+//       return updatedPlanner;
+//     } else {
+//       return originalPlanner;
+//     }
+//   }))
+// };
 
   return (
     <div className="App">
@@ -29,23 +62,29 @@ function App() {
             <Route exact path="/login">
               <Login  />
             </Route>
-            <FestivalsProvider>
+          <FestivalsProvider>
             <Route exact path="/festivals">
             <FestivalList/>
             </Route>
             <Route exact path="/festivals/:id">
-              <FestivalCard />
-            </Route>
-            <Route exact path="/planners">
-              <FestivalPlanner />
+              <FestivalCard setPlanners={setPlanners} planners={planners} />
             </Route>
             <Route exact path="/map">
               <FestivalMap />
-              </Route>
-              <Route exact path="/planners/:id">
-                <PlannerForm />
-              </Route>
-            </FestivalsProvider>
+            </Route>
+            <Route exact path="/planner_list">
+              <PlannerList planners={planners} setPlanners={setPlanners} />
+            </Route>
+            <Route exact path="/planners/:id">
+              <PlannerForm 
+                setNewPlan={setNewPlan} 
+                newPlan={newPlan}
+                addNewPlanner={addNewPlanner} />
+            </Route>
+            <Route exact path="/planner_form">
+              <UpdatePlannerForm />
+            </Route>
+          </FestivalsProvider>
         </Switch>
         </BrowserRouter>
     </div>

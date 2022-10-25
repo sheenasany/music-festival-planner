@@ -4,6 +4,7 @@ import React, { useContext } from "react";
 
 function NavBar() {
   let history = useHistory();
+  
   // calling the user context component 
   let [user, setUser] = useContext(UserContext);
 
@@ -41,7 +42,7 @@ function NavBar() {
           <NavLink exact to="/festivals">
             Festivals
           </NavLink>
-          <NavLink exact to="/planners">
+          <NavLink exact to="/planner_list">
             Festival Planner
           </NavLink>
           <NavLink onClick={handleLogout} exact to="/">

@@ -1,6 +1,7 @@
 import { useHistory } from "react-router-dom";
 import React, { useContext, useState } from "react";
 import { UserContext } from "../GlobalContext/UserProvider";
+import Button from '@mui/material/Button';
 
 function Login(){
     const [ user, setUser ] = useContext(UserContext); //wrapped in curly or square?
@@ -61,7 +62,7 @@ function Login(){
                     onChange={(e) => setPassword(e.target.value)}
                  />  
                  <br/>
-                <button className="btn" type="submit">Login</button>
+                <Button variant="contained" type="submit">Login</Button>
                 <div>
                     <p>Not registered?</p>
                     <a href="/signup">Sign Up</a>

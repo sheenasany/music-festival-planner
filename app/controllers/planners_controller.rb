@@ -1,7 +1,6 @@
 class PlannersController < ApplicationController
 rescue_from ActiveRecord::RecordNotFound, with: :not_found
 rescue_from ActiveRecord::RecordInvalid, with: :render_invalid
-before_action :set_planner, only: [:show, :update, :destroy]
 
 def index
     current_user = User.find_by(id: session[:user_id])
@@ -10,7 +9,8 @@ def index
 end
 
 def show
-    render json: @planner, status: :ok
+    planner = Planner.find(params[:id])
+    render json: planner, status: :ok
 end
 
 def create
@@ -18,19 +18,22 @@ def create
 end
 
 def update
-    render json: @planner.update!(planner_params), status: :accepted
+    planner = Planner.find(params[:id])
+    planner.update!(planner_params)
+    render json: planner, status: :accepted
 end
 
 def destroy
-    @planner.destroy
+    planner = Planner.find(params[:id])
+    planner.destroy
     head :no_content
 end
 
 private
 
-def set_planner
-    @planner = Planner.find(params[:id])
-end
+# def set_planner
+#     @planner = Planner.find(params[:id])
+# end
 
 def planner_params
     params.permit(:budget, :transportation, :lodging, :friends_attending, :additional_notes, :festival_id, :user_id)

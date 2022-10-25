@@ -1,46 +1,41 @@
 import React, {useEffect, useState} from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
+// import PlannerCard from './PlannerCard';
 
-function PlannerForm() {
+function PlannerForm({ setNewPlan, newPlan, addNewPlanner }) {
 
-    const [planners, setPlanners] = useState([])
-    const [newPlan, setNewPlan] = useState({})
-    const [formData, setFormData] = useState({
+    // const [showFestCard, setShowFestCard] = useState(false)
+    
+    const initialState = {
         budget: "",
         transportation: "",
         lodging: "",
         friends_attending: "",
         additional_notes: ""
-    })
+    };
+    
+    const [formData, setFormData] = useState(initialState)
+    const { budget, transportation, lodging, friends_attending, additional_notes } = formData;
 
     useEffect(() => {
-        fetch('/planners')
-        .then(res => res.json())
-        .then(planners => setPlanners(planners))
-            // debugger
-        }, [])
-
-    let {id} = useParams()
-
-    useEffect(() => {
-        fetch(`/planners/${id}`)
-        .then(res => res.json())
-        .then(planner => setNewPlan(planner))
-            // debugger
-        }, [])
+      fetch(`/planners/${id}`)
+      .then(res => res.json())
+      .then(planner => setNewPlan(planner))
+      // debugger
+  }, [])
+    
+        let {id} = useParams()
+        let history = useHistory()
         
-        const addNewPlanner = (newPlanner) => {
-            setPlanners([...planners, newPlanner])
-          }
-        
-    const handleFormSubmit = (e) => {
-    e.preventDefault()
-            fetch(`/planners/${id}`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json'
+        const handleFormSubmit = (e) => {
+              e.preventDefault()
+              debugger
+              fetch(`/planners/${id}`, {
+                  method: 'PATCH',
+                  headers: {
+                      'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({formData})
+                body: JSON.stringify(formData)
             })
             .then(res => res.json())
             .then(data => addNewPlanner(data))
@@ -52,17 +47,35 @@ function PlannerForm() {
                 friends_attending: "",
                 additional_notes: ""
             })
-    }
 
-    const handleInputChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value })
-    }
-
-
-    return(
-        <div>
+            history.push(`/planner_list`)
+            // setShowFestCard(showFestCard => !showFestCard)
+        }
+        
+        const handleInputChange = (e) => {
+            setFormData({ ...formData, [e.target.name]: e.target.value })
+        }
+        
+        //   console.log(newPlan)
+        // debugger
+        
+        return(
+            <div>
+            <div>
+                {newPlan ?
+                <div>
+                <h1>{newPlan.festival.name}</h1>
+                <h3>{newPlan.festival.date}</h3>
+                <img src={newPlan.festival.lineup_poster} alt="festival poster"/>
+                <li>Average Attendance : {newPlan.festival.average_attendance}👯</li>
+                <li>Average Ticket Price : ${newPlan.festival.average_ticket_price}</li>
+                <li><a href={newPlan.festival.link}>Festival URL</a></li>
+                <li>Genre : {newPlan.festival.genre}</li> 
+                </div> : null}
+            </div>
+            <br/>
             Planner form goes here
-            
+            <br/>
             <label>Add A New Planner</label>
             <br/>
             <form onSubmit={handleFormSubmit}>
@@ -71,13 +84,13 @@ function PlannerForm() {
                 <input 
                     type="number"
                     name="budget"
-                    value={formData.budget}
+                    value={budget}
                     onChange={handleInputChange}
                 />
             </div>
             <div>
                 <label>How are you getting to the festival?</label>
-                <select name="transportation" value={formData.transportation}  onChange={(e) => handleInputChange(e)}>
+                <select name="transportation" value={transportation}  onChange={(e) => handleInputChange(e)}>
                    <option value="Car" name="Car">Car</option>
                    <option value="Plane" name="Plane">Plane</option>
                    <option value="Train" name="Train">Train</option>
@@ -90,7 +103,7 @@ function PlannerForm() {
                 <input 
                     type="text"
                     name="lodging"
-                    value={formData.lodging}
+                    value={lodging}
                     onChange={handleInputChange}
                 />
             </div>
@@ -99,7 +112,7 @@ function PlannerForm() {
                 <input 
                     type="text"
                     name="friends_attending"
-                    value={formData.friends_attending}
+                    value={friends_attending}
                     onChange={handleInputChange}
                 />
             </div>
@@ -108,7 +121,7 @@ function PlannerForm() {
                 <input 
                     type="textarea"
                     name="additional_notes"
-                    value={formData.additional_notes}
+                    value={additional_notes}
                     onChange={handleInputChange}
                 />
             </div>
