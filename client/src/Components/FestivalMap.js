@@ -1,7 +1,12 @@
 
 import {useHistory} from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
-import ReactMapGL, {Marker, Popup, NavigationControl, FullscreenControl, GeolocateControl} from 'react-map-gl'; //importing necessary props 
+import ReactMapGL, {
+    Marker, 
+    Popup, 
+    NavigationControl, 
+    FullscreenControl, 
+    GeolocateControl} from 'react-map-gl'; //importing necessary props 
 // import 'mapbox-gl/dist/mapbox-gl.css'; needed for version 7 of react-mapbox
 
 
@@ -72,7 +77,7 @@ function FestivalMap(){
     }
 
     // function to handle mapped data over controlled markers
-    // button on marker handles the center function line 59
+    // button on marker handles the center function
     const mapMarkers = () => {
         if (dataMarkers.length) {
             return dataMarkers.map((dataMarker) => {

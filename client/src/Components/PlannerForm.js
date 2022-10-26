@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-// import PlannerCard from './PlannerCard';
 
 function PlannerForm({ setNewPlan, newPlan, addNewPlanner }) {
-
-    // const [showFestCard, setShowFestCard] = useState(false)
     
+    let {id} = useParams()
+    let history = useHistory()
+
+    // create variable for the initial state of the input fields    
     const initialState = {
         budget: "",
         transportation: "",
@@ -14,22 +15,23 @@ function PlannerForm({ setNewPlan, newPlan, addNewPlanner }) {
         additional_notes: ""
     };
     
+    // set the initial state for formData fields
     const [formData, setFormData] = useState(initialState)
+    // declare the value of the form fields
     const { budget, transportation, lodging, friends_attending, additional_notes } = formData;
 
+    // fetch the individual newly created planner
     useEffect(() => {
       fetch(`/planners/${id}`)
       .then(res => res.json())
       .then(planner => setNewPlan(planner))
       // debugger
   }, [])
-    
-        let {id} = useParams()
-        let history = useHistory()
         
+        // first patch request for user to "create" planner form after the post request to join user and festival  
         const handleFormSubmit = (e) => {
               e.preventDefault()
-              debugger
+            //   debugger
               fetch(`/planners/${id}`, {
                   method: 'PATCH',
                   headers: {
@@ -40,28 +42,20 @@ function PlannerForm({ setNewPlan, newPlan, addNewPlanner }) {
             .then(res => res.json())
             .then(data => addNewPlanner(data))
 
-            setFormData({
-                budget: "",
-                transportation: "",
-                lodging: "",
-                friends_attending: "",
-                additional_notes: ""
-            })
+            setFormData(initialState)
 
             history.push(`/planner_list`)
-            // setShowFestCard(showFestCard => !showFestCard)
+           
         }
         
         const handleInputChange = (e) => {
             setFormData({ ...formData, [e.target.name]: e.target.value })
         }
         
-        //   console.log(newPlan)
-        // debugger
-        
         return(
             <div>
             <div>
+                {/* if newPlan data exists, render elements, if not render null */}
                 {newPlan ?
                 <div>
                 <h1>{newPlan.festival.name}</h1>
@@ -73,8 +67,6 @@ function PlannerForm({ setNewPlan, newPlan, addNewPlanner }) {
                 <li>Genre : {newPlan.festival.genre}</li> 
                 </div> : null}
             </div>
-            <br/>
-            Planner form goes here
             <br/>
             <label>Add A New Planner</label>
             <br/>
@@ -90,7 +82,8 @@ function PlannerForm({ setNewPlan, newPlan, addNewPlanner }) {
             </div>
             <div>
                 <label>How are you getting to the festival?</label>
-                <select name="transportation" value={transportation}  onChange={(e) => handleInputChange(e)}>
+                <select name="transportation" value={transportation}  onChange={handleInputChange}>
+                    <option value="" name="">Select an option</option>
                    <option value="Car" name="Car">Car</option>
                    <option value="Plane" name="Plane">Plane</option>
                    <option value="Train" name="Train">Train</option>

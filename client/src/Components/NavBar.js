@@ -1,26 +1,36 @@
-import { NavLink, useHistory } from "react-router-dom";
-import { UserContext } from "../GlobalContext/UserProvider";
-import React, { useContext } from "react";
+import { NavLink } from "react-router-dom";
+// import { UserContext } from "../GlobalContext/UserProvider";
+import React from "react";
 
-function NavBar() {
-  let history = useHistory();
+function NavBar({user, handleLogout }) {
+  // let history = useHistory();
+  
   
   // calling the user context component 
-  let [user, setUser] = useContext(UserContext);
+  // let [user, setUser] = useContext(UserContext);
 
   // fetch to handle user session logout
-  const handleLogout = () => {
-    fetch("/logout", {
-      method: "DELETE",
-    });
-    setUser(null);
-    history.push("/");
-  };
 
+//  debugger
   return (
     <nav>
-      {!user ? (
+      {/* if there is not a current user, show these links, if yes, show the logged in links */}
+      {user ? (
         <div>
+          <NavLink exact to="/">
+            Home
+          </NavLink>
+          <NavLink exact to="/festivals">
+            Festivals
+          </NavLink>
+          <NavLink exact to="/planner_list">
+            Festival Planner
+          </NavLink>
+          <button onClick={handleLogout}>
+            Logout
+          </button>
+        </div> ) :
+        ( <div>
           <NavLink exact to="/">
             Home
           </NavLink>
@@ -33,23 +43,7 @@ function NavBar() {
           <NavLink exact to="/festivals">
           Festivals
           </NavLink>
-        </div>
-      ) : (
-        <div>
-          <NavLink exact to="/">
-            Home
-          </NavLink>
-          <NavLink exact to="/festivals">
-            Festivals
-          </NavLink>
-          <NavLink exact to="/planner_list">
-            Festival Planner
-          </NavLink>
-          <NavLink onClick={handleLogout} exact to="/">
-            Logout
-          </NavLink>
-        </div>
-      )}
+        </div>)}
     </nav>
   );
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function FestivalListCard({ festival }){
+    console.log(festival.id)
     return(
         <div>
         <Link to={`/festivals/${festival.id}`}>

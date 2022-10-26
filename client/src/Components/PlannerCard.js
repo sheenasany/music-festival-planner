@@ -1,22 +1,20 @@
 import React, { useState } from "react";
 import UpdatePlannerForm from "./UpdatePlannerForm";
-import { useParams } from "react-router-dom"
 
 function PlannerCard({ planner, planners, setPlanners }) {
 
-    // console.log(planner.festival.name)
-
     const [isUpdating, setIsUpdating] = useState(false)
 
+    // function to handle update form toggle 
     const handleUpdateToggle = () => {
         setIsUpdating(!isUpdating);
     }
 
+    //function to handle delete
       const onDeletePlanner = (id) => {
         setPlanners(planners.filter(planner => id !== planner.id))
       }
 
-    //   let {id} = useParams()
     const handleDelete = () => {
         fetch(`/planners/${planner.id}`, {
             method: "DELETE"

@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import {FestivalsProvider} from './GlobalContext/FestivalsProvider';
+import { Switch, Route, useHistory } from "react-router-dom";
 import Login from './Components/Login';
 import Signup from './Components/Signup';
 import NavBar from './Components/NavBar';
@@ -14,62 +13,83 @@ import UpdatePlannerForm from './Components/UpdatePlannerForm';
 
 function App() {
 
+  const [user, setUser] = useState({})
   const [planners, setPlanners] = useState([])
   const [newPlan, setNewPlan] = useState()
+
+  let history = useHistory()
+
+  // console.log(useHistory())
+
+  useEffect(() => {
+    fetch("/me")
+        .then((res) => {
+            if (res.ok) {
+                res.json()
+        .then((user) => setUser(user))
+      }
+    })
+  }, [])
+
+  const handleLogout = () => {
+    fetch("/logout", {
+      method: "DELETE",
+    })
+      .then(res => {
+        if (res.ok) {
+          setUser(null);
+          setPlanners([])
+          
+          history.push("/")
+        }
+      })
+    // debugger
+  }
 
   useEffect(() => {
     fetch('/planners')
     .then(res => res.json())
     .then(planners => setPlanners(planners))
         // debugger
-    }, [])
+    }, [user])
     // console.log(planners)
 
     // function to add the new planner from festival list to planner list
   const addNewPlanner = (newPlanner) => {
-    console.log(newPlanner)
+    // console.log(newPlanner)
     setPlanners([...planners, newPlanner])
 }
 
-// function to update the planner in update planner form
-// const onUpdatePlanner = (updatedPlanner) => {
-//   const updatePlanner = planners.map(originalPlanner => originalPlanner.id === updatedPlanner.id ? updatedPlanner : originalPlanner)
-//   setPlanners(updatePlanner)
-// }
+  const [festivals, setFestivals] = useState([])
 
-// const onUpdatePlanner = (updatedPlanner) => {
-//   setPlanners(planners => planners.map(originalPlanner => {
-//     if (originalPlanner.id === updatedPlanner.id) {
-//       return updatedPlanner;
-//     } else {
-//       return originalPlanner;
-//     }
-//   }))
-// };
+  useEffect(() => {
+    fetch('/festivals')
+      .then(res => res.json())
+      .then(festivals => setFestivals(festivals))
+  }, [])
 
   return (
     <div className="App">
-      <h1>Herro World!</h1>
-      <BrowserRouter>
-        <NavBar  />
+      <h1>Festie</h1>
+        <NavBar setUser={setUser} user={user} handleLogout={handleLogout} />
           <Switch>
             <Route exact path="/">
              <Homepage />
             </ Route>
             <Route exact path="/signup">
-              <Signup />
+              <Signup user={user} setUser={setUser} />
             </ Route>
             <Route exact path="/login">
-              <Login  />
+              <Login  user={user} setUser={setUser} />
             </Route>
-          <FestivalsProvider>
+          {/* <FestivalsProvider> */}
             <Route exact path="/festivals">
-            <FestivalList/>
+            <FestivalList festivals={festivals} />
             </Route>
-            <Route exact path="/festivals/:id">
-              <FestivalCard setPlanners={setPlanners} planners={planners} />
+            <Route  exact path="/festivals/:id">
+              <FestivalCard setPlanners={setPlanners} planners={planners} user={user} />
             </Route>
-            <Route exact path="/map">
+            <Route path="/map">
               <FestivalMap />
             </Route>
             <Route exact path="/planner_list">
@@ -84,9 +104,8 @@ function App() {
             <Route exact path="/planner_form">
               <UpdatePlannerForm />
             </Route>
-          </FestivalsProvider>
+          {/* </FestivalsProvider> */}
         </Switch>
-        </BrowserRouter>
     </div>
   );
 }

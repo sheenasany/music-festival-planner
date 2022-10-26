@@ -1,13 +1,11 @@
 import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import { FestivalsContext } from '../GlobalContext/FestivalsProvider';
-import { UserContext } from '../GlobalContext/UserProvider';
+// import { FestivalsContext } from '../GlobalContext/FestivalsProvider';
 import FestivalListCard from './FestivalListCard';
 
-function FestivalList() {
+function FestivalList({festivals}) {
 // useContext states
-let [user, setUser] = useContext(UserContext);
-let [festivals, setFestivals] = useContext(FestivalsContext)
+// let [festivals, setFestivals] = useContext(FestivalsContext)
 
 // initialized state for filtered arrays
 const [selectedGenre, setSelectedGenre] = useState("")
@@ -34,15 +32,15 @@ let allFilters = festivals.filter(filteredGenre => {
         // may add average ticket and average attendance.filter() later
     }) 
 
-    //mapping over filtered festivals and creating link that pushes to individual festival card
+    //mapping over filtered festivals and creating festival cards
     const festivalList = allFilters.map(festival => (
         <FestivalListCard key={festival.id} festival={festival} /> ))
 
+        // toggle for map 
         let history = useHistory()
         const handleMapToggle = () => {
             history.push('/map')
         }
-
 
     return(
         <div className="container">

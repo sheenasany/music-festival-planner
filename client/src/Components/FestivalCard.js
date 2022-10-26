@@ -1,14 +1,16 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import { UserContext } from '../GlobalContext/UserProvider';
 
-function FestivalCard({ planners, setPlanners }) {
+function FestivalCard({ user }) {
 
     // useParams allows the use of the festival's id in fetch request
     let {id} = useParams()
+
+    // allows the use of routes and the ability to push to routes
+    let history = useHistory()
+
     const [festInfo, setFestInfo] = useState("");
-    let [user, setUser] = useContext(UserContext);
-    // const [newPlanner, setNewPlanner] = useState({})
+    // let [user, setUser] = useContext(UserContext);
 
     // fetch for individual festival 
     useEffect(() => {
@@ -17,8 +19,7 @@ function FestivalCard({ planners, setPlanners }) {
             .then(data => setFestInfo(data))
     }, [])
 
-    let history = useHistory()
-
+    // Async and Await Initial Post request of planner to join festival id and user id 
     const handleAddPlanner = async() => {
        
         const res = await fetch('/planners', {
@@ -39,7 +40,6 @@ function FestivalCard({ planners, setPlanners }) {
         const data = await res.json()
 
         const redirect = (data) => {
-            setPlanners([...planners, data])
             history.push(`/planners/${data.id}`)
         }
         redirect(data)
@@ -48,6 +48,7 @@ function FestivalCard({ planners, setPlanners }) {
     return(
         <div className="container">
             Festival Card goes here
+            {/* if festInfo is not an empty string, load the information, if not load null */}
             {festInfo !== "" ? 
             <div>
             <h1>{festInfo.name}</h1>
@@ -57,6 +58,7 @@ function FestivalCard({ planners, setPlanners }) {
             <p>Average Price Range : ${festInfo.average_ticket_price}</p>
             <a href={festInfo.link}>Festival URL</a>
             <p>Genre : {festInfo.genre}</p>
+            {/* if there is a current user, show planner button, if not show login option */}
             {user ? 
                 <button onClick={handleAddPlanner}>Add to Planner</button> : 
                 <div>Wanna add this to your planner? <a href="/login">Log In</a></div>}

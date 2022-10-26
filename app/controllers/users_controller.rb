@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 rescue_from ActiveRecord::RecordInvalid, with: :render_invalid
-    skip_before_action :authorize, only: [:create]
+    skip_before_action :authorize, only: [:create, :show]
 
     def show
         render json: @current_user, status: :ok #shows the current user logged in, works through the before_action
