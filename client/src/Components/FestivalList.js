@@ -33,14 +33,14 @@ let allFilters = festivals.filter(filteredGenre => {
     }) 
 
     //mapping over filtered festivals and creating festival cards
-    const festivalList = allFilters.map(festival => (
-        <FestivalListCard key={festival.id} festival={festival} /> ))
+    // const festivalList = allFilters.map(festival => (
+    //     <FestivalListCard key={festival.id} festival={festival} /> ))
 
-        // toggle for map 
-        let history = useHistory()
-        const handleMapToggle = () => {
-            history.push('/map')
-        }
+        // // toggle for map 
+        // let history = useHistory()
+        // const handleMapToggle = () => {
+        //     history.push('/map')
+        // }
 
     return(
         <div className="container">
@@ -64,13 +64,13 @@ let allFilters = festivals.filter(filteredGenre => {
                     <option value="false">No</option>
                 </select>
             </div>
-            <div className="button">
+            {/* <div className="button">
                 <button type="button" className="map-box" onClick={handleMapToggle}>
                     Show Map
                 </button>
-            </div>
+            </div> */}
         <div id="festival-list-container">
-        {festivalList}
+        <FestivalListCard festivals={festivals}/>
         </div>
         </div>
     )

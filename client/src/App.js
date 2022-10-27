@@ -70,7 +70,6 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Festie</h1>
         <NavBar setUser={setUser} user={user} handleLogout={handleLogout} />
           <Switch>
             <Route exact path="/">
@@ -86,7 +85,7 @@ function App() {
             <Route exact path="/festivals">
             <FestivalList festivals={festivals} />
             </Route>
-            <Route  exact path="/festivals/:id">
+            <Route exact path="/festivals/:id">
               <FestivalCard setPlanners={setPlanners} planners={planners} user={user} />
             </Route>
             <Route path="/map">

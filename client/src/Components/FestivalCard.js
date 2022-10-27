@@ -9,7 +9,7 @@ function FestivalCard({ user }) {
     // allows the use of routes and the ability to push to routes
     let history = useHistory()
 
-    const [festInfo, setFestInfo] = useState("");
+    const [festInfo, setFestInfo] = useState(null);
     // let [user, setUser] = useContext(UserContext);
 
     // fetch for individual festival 
@@ -19,6 +19,7 @@ function FestivalCard({ user }) {
             .then(data => setFestInfo(data))
     }, [])
 
+    // console.log(festInfo)
     // Async and Await Initial Post request of planner to join festival id and user id 
     const handleAddPlanner = async() => {
        
@@ -47,13 +48,13 @@ function FestivalCard({ user }) {
 
     return(
         <div className="container">
-            Festival Card goes here
             {/* if festInfo is not an empty string, load the information, if not load null */}
-            {festInfo !== "" ? 
-            <div>
+            {festInfo !== null ? 
+            <div className="festival-card">
             <h1>{festInfo.name}</h1>
             <h3>{festInfo.date} -- {festInfo.marker.address}</h3>
-            <img src={festInfo.lineup_poster} alt="lineup poster" />
+            <img className="poster" src={festInfo.lineup_poster} alt="lineup poster" />
+            <div className="info">
             <p>Average Attendance : {festInfo.average_attendance}👯</p>
             <p>Average Price Range : ${festInfo.average_ticket_price}</p>
             <a href={festInfo.link}>Festival URL</a>
@@ -62,6 +63,7 @@ function FestivalCard({ user }) {
             {user ? 
                 <button onClick={handleAddPlanner}>Add to Planner</button> : 
                 <div>Wanna add this to your planner? <a href="/login">Log In</a></div>}
+            </div>
             </div>
             : null}
         </div>

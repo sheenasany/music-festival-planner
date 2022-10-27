@@ -123,10 +123,13 @@ function FestivalMap(){
 }
     
     return(
-        <div>
-            <h1>Map of Festivals</h1>
-            <button type="button" onClick={handleShowList}> Show List </button>
+        <div className="map-container">
+            <h1>Festival Map</h1>
+            <div className="show-list">
+            <button className="showlistbtn" type="button" onClick={handleShowList}> Show List </button>
+            </div>
             <br/>
+            <div className="le-map"> 
             <ReactMapGL 
                 {...viewport}
                 mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
@@ -147,6 +150,7 @@ function FestivalMap(){
             {showSelectedFestPopup()}
 
             </ReactMapGL>
+            </div>
         </div>
     )
 }

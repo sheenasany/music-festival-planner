@@ -26,9 +26,11 @@ function NavBar({user, handleLogout }) {
           <NavLink exact to="/planner_list">
             Festival Planner
           </NavLink>
-          <button onClick={handleLogout}>
+          {/* <div className="logout-btn" >  */}
+          <button className="logout" onClick={handleLogout}>
             Logout
           </button>
+          {/* </div> */}
         </div> ) :
         ( <div>
           <NavLink exact to="/">

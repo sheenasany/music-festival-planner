@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-/* nav {
+nav {
   background-color: #79bbff;
 }
 
@@ -32,7 +32,35 @@ nav a:hover,
 nav a:active {
   color: #114673;
   border-bottom: 2px solid #ffff;
-} */
+}
+
+.logout {
+  float: right; 
+  display: inline-block;
+  margin-top: 18px;
+  margin-right: 10px;
+}
+
+.festival-card h1, h3 {
+  text-align: center;
+}
+
+.poster {
+  height: 50%;
+  width: 50%;
+  margin-left: 30px;
+  margin-top: 20px;
+}
+
+.info {
+  display: inline-block;
+  justify-content: right;
+  text-align: center;
+  margin-left: 100px;
+  margin-bottom: 50px;
+  border-radius: 2pt;
+  /* border-co */
+}
 
 .marker-btn {
   background: none;
@@ -44,3 +72,58 @@ nav a:active {
   width: 20px;
   height: 20px;
 }
+
+/* 
+.map-container {
+  background-image: url("https://images.pexels.com/photos/3052360/pexels-photo-3052360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-repeat: no-repeat;
+  /* background-position: center; */
+  /* background-size: cover; */
+/* } */
+
+.homepage {
+  background-image: url("https://images.pexels.com/photos/3052360/pexels-photo-3052360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+ize: cover;
+  background-position: center;
+  height: 655px;
+  width: 100%
+}
+
+.homepage h1 {
+  /* text-align: center;
+  margin-top: 50%; */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+}
+
+.map-container h1 {
+  text-align: center;
+}
+
+.map-container {
+  background-image: url(https://images.pexels.com/photos/2747448/pexels-photo-2747448.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  background-size: cover;
+  background-position: center;
+  height: 655px;
+  width: 100%
+}
+
+.show-list {
+margin-left: 47%;
+/* margin-top: 50%; */
+
+/* position: inherit; */
+}
+
+.showlistbtn {
+  /* margin-bottom: 50%; */
+}
+
+.le-map {
+  display: flex;
+  justify-content: center;
+}
+
