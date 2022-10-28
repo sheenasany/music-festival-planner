@@ -1,7 +1,15 @@
 import React, {useState} from 'react';
+import {FcUndo} from "react-icons/fc";
 
 function UpdatePlannerForm({ setPlanners, planner, handleUpdateToggle }) {
     
+    const [isCancel, setIsCancel] = useState(false)
+
+    // function to handle cancel form toggle 
+    const handleCancelToggle = () => {
+        setIsCancel(!isCancel);
+    }
+
     // declaring the initial state of the form fields
     const initialState = {
         budget: planner.budget,
@@ -50,12 +58,9 @@ const handleUpdateSubmit = (e) => {
   }
 
     return(
-        <div>
-            Planner form goes here
-            <br/>
-            <label>Add A New Planner</label>
-            <br/>
+        <div className='plannerUpdateForm'>
             <form onSubmit={handleUpdateSubmit}>
+            <FcUndo className="cancelbtn" onClick={() => handleUpdateToggle()}/>
             <div>
                 <label>What's your budget?</label>
                 <input 
@@ -102,7 +107,7 @@ const handleUpdateSubmit = (e) => {
                     onChange={handleChange}
                 />
             </div>
-                <button type="submit">Submit</button>
+                <button className="plannerbtn" type="submit">Update Planner</button>
             </form>
         </div>
     )

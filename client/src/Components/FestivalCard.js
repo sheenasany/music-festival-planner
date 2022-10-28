@@ -48,21 +48,28 @@ function FestivalCard({ user }) {
 
     return(
         <div className="container">
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+            </style>
             {/* if festInfo is not an empty string, load the information, if not load null */}
             {festInfo !== null ? 
-            <div className="festival-card">
-            <h1>{festInfo.name}</h1>
-            <h3>{festInfo.date} -- {festInfo.marker.address}</h3>
-            <img className="poster" src={festInfo.lineup_poster} alt="lineup poster" />
-            <div className="info">
-            <p>Average Attendance : {festInfo.average_attendance}👯</p>
-            <p>Average Price Range : ${festInfo.average_ticket_price}</p>
-            <a href={festInfo.link}>Festival URL</a>
-            <p>Genre : {festInfo.genre}</p>
+            <div className="festcard-header">
+                <h1>{festInfo.name}</h1>
+                <h3>{festInfo.date} -- {festInfo.marker.address}</h3>
+            <div className="info-card">
+                <img className="poster" src={festInfo.lineup_poster} alt="lineup poster" />
+                    <div className="info">
+                        <p>Average Attendance : {festInfo.average_attendance}👯</p>
+                        <p>Average Price Range : ${festInfo.average_ticket_price}</p>
+                        <p>Genre : {festInfo.genre}</p>
+                        <div className="festurl">
+                        <a href={festInfo.link}>Festival URL</a>
+                        </div>
             {/* if there is a current user, show planner button, if not show login option */}
-            {user ? 
-                <button onClick={handleAddPlanner}>Add to Planner</button> : 
-                <div>Wanna add this to your planner? <a href="/login">Log In</a></div>}
+                {user ? 
+                    <button className="plannerbtn" onClick={handleAddPlanner}>Add Festival to Planner</button> : 
+                    <div>Wanna add this to your planner? <a href="/login">Log In</a></div>}
+            </div>
             </div>
             </div>
             : null}

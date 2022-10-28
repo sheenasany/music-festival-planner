@@ -53,27 +53,32 @@ function PlannerForm({ setNewPlan, newPlan, addNewPlanner }) {
         }
         
         return(
-            <div>
-            <div>
+            <div className='container'>
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+            </style>
                 {/* if newPlan data exists, render elements, if not render null */}
                 {newPlan ?
-                <div>
-                <h1>{newPlan.festival.name}</h1>
-                <h3>{newPlan.festival.date}</h3>
-                <img src={newPlan.festival.lineup_poster} alt="festival poster"/>
-                <li>Average Attendance : {newPlan.festival.average_attendance}👯</li>
-                <li>Average Ticket Price : ${newPlan.festival.average_ticket_price}</li>
-                <li><a href={newPlan.festival.link}>Festival URL</a></li>
-                <li>Genre : {newPlan.festival.genre}</li> 
-                </div> : null}
-            </div>
-            <br/>
-            <label>Add A New Planner</label>
-            <br/>
+                <div className="festcard-header">
+                    <h1>{newPlan.festival.name}</h1>
+                    <h3>{newPlan.festival.date}</h3>
+                <div className="info-card">
+                    <img className="poster" src={newPlan.festival.lineup_poster} alt="festival poster"/>
+                        <div className="info">
+                            <p>Average Attendance : {newPlan.festival.average_attendance}👯</p>
+                            <p>Average Ticket Price : ${newPlan.festival.average_ticket_price}</p>
+                            <p>Genre : {newPlan.festival.genre}</p> 
+                                <div className="festurl">
+                                    <a href={newPlan.festival.link}>Festival URL</a>
+                                </div>
+                            </div>
+                        </div>  
+                    </div> : null}
+            <div className='festform'>
             <form onSubmit={handleFormSubmit}>
-            <div>
-                <label>What's your budget?</label>
+            <div >
                 <input 
+                    placeholder="What's your budget?"
                     type="number"
                     name="budget"
                     value={budget}
@@ -81,7 +86,7 @@ function PlannerForm({ setNewPlan, newPlan, addNewPlanner }) {
                 />
             </div>
             <div>
-                <label>How are you getting to the festival?</label>
+                <label>How are you getting to the festival?
                 <select name="transportation" value={transportation}  onChange={handleInputChange}>
                     <option value="" name="">Select an option</option>
                    <option value="Car" name="Car">Car</option>
@@ -90,10 +95,11 @@ function PlannerForm({ setNewPlan, newPlan, addNewPlanner }) {
                    <option value="Boat" name="Boat">By Sea</option>
                    <option value="Walking" name="Walking">My own two feet</option>
                 </select>
+                </label>
             </div>
             <div>
-                <label>Where are you staying?</label>
-                <input 
+                <input
+                    placeholder='Where are you staying?'
                     type="text"
                     name="lodging"
                     value={lodging}
@@ -101,8 +107,8 @@ function PlannerForm({ setNewPlan, newPlan, addNewPlanner }) {
                 />
             </div>
             <div>
-                <label>Who are you going with?</label>
-                <input 
+                <input
+                    placeholder="Who are you going with?" 
                     type="text"
                     name="friends_attending"
                     value={friends_attending}
@@ -110,17 +116,19 @@ function PlannerForm({ setNewPlan, newPlan, addNewPlanner }) {
                 />
             </div>
             <div>
-                <label>Anything else?</label>
-                <input 
+                <textarea
+                    placeholder="Anything else?" 
                     type="textarea"
+                    rows="5"
                     name="additional_notes"
                     value={additional_notes}
                     onChange={handleInputChange}
                 />
             </div>
-                <button type="submit">Submit</button>
+                <button className="plannerbtn" type="submit">Add New Planner</button>
             </form>
         </div>
+    </div>
     )
 }
 

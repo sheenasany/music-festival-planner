@@ -17,13 +17,13 @@ function NavBar({user, handleLogout }) {
       {/* if there is not a current user, show these links, if yes, show the logged in links */}
       {user ? (
         <div>
-          <NavLink exact to="/">
+          <NavLink className="home" exact to="/">
             Home
           </NavLink>
-          <NavLink exact to="/festivals">
+          <NavLink className="festivalnav" exact to="/festivals">
             Festivals
           </NavLink>
-          <NavLink exact to="/planner_list">
+          <NavLink className="plannernav" exact to="/planner_list">
             Festival Planner
           </NavLink>
           {/* <div className="logout-btn" >  */}
@@ -33,16 +33,16 @@ function NavBar({user, handleLogout }) {
           {/* </div> */}
         </div> ) :
         ( <div>
-          <NavLink exact to="/">
+          <NavLink className="home" exact to="/">
             Home
           </NavLink>
-          <NavLink exact to="/login">
+          <NavLink className="loginnav"exact to="/login">
             Login
           </NavLink>
-          <NavLink exact to="/signup">
+          <NavLink className="signupnav" exact to="/signup">
             Signup
           </NavLink>
-          <NavLink exact to="/festivals">
+          <NavLink className="festivalnav" exact to="/festivals">
           Festivals
           </NavLink>
         </div>)}

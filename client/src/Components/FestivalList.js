@@ -44,34 +44,9 @@ let allFilters = festivals.filter(filteredGenre => {
 
     return(
         <div className="container">
-            Festival List goes here
-            <div className="genre-filter">
-            <label>Filter By Genre : </label>
-                <select onChange={handleSelectedGenre} name="filter">
-                    <option value="">All Genres</option>
-                    <option value="Folk">Folk</option>
-                    <option value="Electronic">Electronic</option>
-                    <option value="Dubstep">Dubstep</option>
-                    <option value="Country">Country</option>
-                    <option value="Rock">Rock</option>
-                </select>
+            <div id="festival-list-container">
+                <FestivalListCard festivals={festivals}/>
             </div>
-            <div className="camping-filter">
-            <label>Filter By Camping Availability : </label>
-                <select onChange={handleCamping} name="filter">
-                    <option value="">Has Camping</option>
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
-                </select>
-            </div>
-            {/* <div className="button">
-                <button type="button" className="map-box" onClick={handleMapToggle}>
-                    Show Map
-                </button>
-            </div> */}
-        <div id="festival-list-container">
-        <FestivalListCard festivals={festivals}/>
-        </div>
         </div>
     )
 };

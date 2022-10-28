@@ -1,6 +1,7 @@
 
 import {useHistory} from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
+import { FcViewDetails } from 'react-icons/fc';
 import ReactMapGL, {
     Marker, 
     Popup, 
@@ -39,9 +40,9 @@ function FestivalMap(){
     const [viewport, setViewport] = useState({
         latitude: 39.8283,
         longitude: -98.5795,
-        width: "60vw",
-        height: "60vh",
-        zoom: 3
+        width: "75vw",
+        height: "70vh",
+        zoom: 3.5
     })
 
     useEffect(() => {
@@ -102,7 +103,7 @@ function FestivalMap(){
         console.log(selectedFest)
         // debugger
         return (
-            <Popup 
+            <Popup
                 latitude={selectedFest.latitude} 
                 longitude={selectedFest.longitude}
                 onClose={() => {
@@ -111,11 +112,14 @@ function FestivalMap(){
             >
                 <div>
                     {/* nested data needed square brackets*/}
-                    <h3>{selectedFest.festivals[0].name} || {selectedFest.festivals[0].date}</h3>
-                    <li>{selectedFest.city}</li>
-                    <li>{selectedFest.state}</li>
+                    <h3>{selectedFest.festivals[0].name}</h3>
+                    <h4>{selectedFest.festivals[0].date}</h4>
+                    <p>{selectedFest.city}, {selectedFest.state}</p>
                     {/* button pushes to festival card*/}
-                    <button onClick={handleShowDetailsBtn}> Show More Details </button>
+                    <div className='showinfo-btn'>
+                    <FcViewDetails className="popup-btn" onClick={handleShowDetailsBtn}/>
+                    <p className='showdeets'>Show Details</p>
+                    </div>
                 </div>
             </Popup>
         )
@@ -124,7 +128,13 @@ function FestivalMap(){
     
     return(
         <div className="map-container">
-            <h1>Festival Map</h1>
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+            </style>
+            <div className="map-header">
+                <h1>Festival Map</h1>
+            </div>
+            
             <div className="show-list">
             <button className="showlistbtn" type="button" onClick={handleShowList}> Show List </button>
             </div>

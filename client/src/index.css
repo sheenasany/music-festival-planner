@@ -13,7 +13,7 @@ code {
 }
 
 nav {
-  background-color: #79bbff;
+  background-color: #367ec7;
 }
 
 nav a {
@@ -24,31 +24,108 @@ nav a {
   text-decoration: none;
   font-size: 1.2em;
   color: #ffff;
-  border-bottom: 2px solid #114673;
+  border-bottom: 2px solid #115374;
   transition: 0.1s;
 }
 
-nav a:hover,
+/* nav a:hover,
 nav a:active {
   color: #114673;
   border-bottom: 2px solid #ffff;
+} */
+
+.home {
+  background-image: linear-gradient(#c48cd4,#73c0da);
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: .4s;
+}
+.home:hover {
+  background-size: 100% 100%;
+}
+
+.loginnav {
+  background-image: linear-gradient(#c48cd4,#73c0da);
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: .4s;
+}
+.loginnav:hover {
+  background-size: 100% 100%;
+}
+
+.signupnav {
+  background-image: linear-gradient(#c48cd4,#73c0da);
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: .4s;
+}
+.signupnav:hover {
+  background-size: 100% 100%;
+}
+
+.plannernav {
+  background-image: linear-gradient(#c48cd4,#73c0da);
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: .4s;
+}
+.plannernav:hover {
+  background-size: 100% 100%;
+}
+
+.festivalnav {
+  background-image: linear-gradient(#c48cd4,#73c0da);
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: .4s;
+}
+.festivalnav:hover {
+  background-size: 100% 100%;
 }
 
 .logout {
   float: right; 
   display: inline-block;
-  margin-top: 18px;
-  margin-right: 10px;
+  margin-top: 13.5px;
+  margin-right: 50px;
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 30px;
+  padding: 0px 15px;
+  text-shadow: rgb(0 0 0 / 25%) 0px 3px 8px;
+  background: linear-gradient(92.88deg, rgb(69, 94, 181) 9.16%, rgb(86, 67, 204) 43.89%, rgb(103, 63, 215) 64.72%);
+  transition: all 0.5s ease 0s;
 }
 
-.festival-card h1, h3 {
+.festcard-header h1, h3 {
   text-align: center;
 }
 
+.festcard-header h3 {
+  font-size: 18pt;
+}
+
+.festcard-header h1 {
+  font-family: 'Monoton', cursive;
+  font-size: 50pt;
+  margin-top: auto;
+}
+
+.info-card {
+  display: flex;
+}
+
 .poster {
-  height: 50%;
-  width: 50%;
-  margin-left: 30px;
+  height: 600px;
+  width: 500px;
+  margin-left: 10%;
   margin-top: 20px;
 }
 
@@ -56,10 +133,43 @@ nav a:active {
   display: inline-block;
   justify-content: right;
   text-align: center;
-  margin-left: 100px;
-  margin-bottom: 50px;
-  border-radius: 2pt;
-  /* border-co */
+  margin-left: 200px;
+  margin-bottom: 10px;
+  margin-top: 60px;
+  margin-right: 100px;
+  border-radius: 20pt;
+  height: 50%;
+  width: 25%;
+  font-size: large;
+  /* border: cadetblue solid; */
+  padding: 20px;
+  box-shadow: 7px 7px 15px #bbcfda,-4px -4px 13px #fff, inset 4px 4px 8px rgba(209, 217, 230, 0.2),  inset -8px -8px 8px rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3); 
+  background: #e8eff5;
+}
+
+.festform {
+  display: inline-block;
+  text-align: center;
+  margin-left: 56%;
+  margin-top: -270px;
+  margin-bottom: 30px;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* width: fit-content; */
+  height: 68%;
+  width: 400px;
+  text-align: center;
+  /* margin: auto; */
+  /* margin-top: 10%; */
+  box-shadow: 7px 7px 15px #bbcfda,-4px -4px 13px #fff, inset 4px 4px 8px rgba(209, 217, 230, 0.2),  inset -8px -8px 8px rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20pt;
+  background: #e8eff5;
+}
+
+.festurl {
+  margin-bottom: 20px;
 }
 
 .marker-btn {
@@ -73,30 +183,22 @@ nav a:active {
   height: 20px;
 }
 
-/* 
-.map-container {
-  background-image: url("https://images.pexels.com/photos/3052360/pexels-photo-3052360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
-  background-repeat: no-repeat;
-  /* background-position: center; */
-  /* background-size: cover; */
-/* } */
-
 .homepage {
   background-image: url("https://images.pexels.com/photos/3052360/pexels-photo-3052360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
-ize: cover;
+  background-size: cover;
   background-position: center;
   height: 655px;
   width: 100%
 }
 
 .homepage h1 {
-  /* text-align: center;
-  margin-top: 50%; */
-
   display: flex;
   justify-content: center;
   align-items: center;
   height: 500px;
+  font-family: 'Monoton', cursive;
+  font-size: 100px;
+  margin: auto;
 }
 
 .map-container h1 {
@@ -111,15 +213,58 @@ ize: cover;
   width: 100%
 }
 
+.mapboxgl-popup-content {
+  background-image: initial !important;
+  background-color: crimson !important;
+  box-shadow: rgb(13 13 13 / 10%) 0px 1px 2px !important;
+  text-align: center !important;
+}
+
+.popup-btn {
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+}
+
+.css-10759ka-MuiTypography-root {
+  margin: 0;
+  font-family: 'Monoton', cursive !important;
+  font-weight: 300;
+  font-size: 3.75rem;
+  line-height: 1.2;
+  letter-spacing: -0.00833em;
+  text-align: center;
+  margin-bottom: 0.35em;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.showinfo-btn {
+  display: inline-block
+}
+
+.show-deets {
+  display: inline-block;
+}
+
 .show-list {
 margin-left: 47%;
-/* margin-top: 50%; */
-
-/* position: inherit; */
 }
 
 .showlistbtn {
-  /* margin-bottom: 50%; */
+display: inline-block;
+margin: 10px;
+outline: 0;
+border: 0;
+cursor: pointer;
+color: #fff;
+font-weight: 500;
+border-radius: 4px;
+font-size: 14px;
+height: 30px;
+padding: 0px 15px;
+text-shadow: rgb(0 0 0 / 25%) 0px 3px 8px;
+background: linear-gradient(92.88deg, rgb(69, 94, 181) 9.16%, rgb(86, 67, 204) 43.89%, rgb(103, 63, 215) 64.72%);
+transition: all 0.5s ease 0s;
 }
 
 .le-map {
@@ -127,3 +272,123 @@ margin-left: 47%;
   justify-content: center;
 }
 
+.genre-filter {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  margin-left: 30%;
+}
+
+.camping-filter {
+  margin-bottom: 30px;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  margin-left: 8%;
+}
+
+.cancelbtn {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 220pt;
+}
+
+.plannerUpdateForm {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  height: 68%;
+  width: 400px;
+  text-align: center;
+  margin: auto;
+  margin-top: 10%;
+  box-shadow: 7px 7px 15px #bbcfda,-4px -4px 13px #fff, inset 4px 4px 8px rgba(209, 217, 230, 0.2),  inset -8px -8px 8px rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3); 
+  background: #e8eff5;
+}
+
+input {
+  border-radius: 8em;
+  border: cadetblue solid;
+  padding: 10px;
+  margin: 10pt;
+  /* margin-top: 7pt; */
+}
+
+textarea {
+  border-radius: 8em;
+  border: cadetblue solid;
+  padding: 10px;
+  /* margin: 10px; */
+  width: 80%;
+}
+
+/* .note-comment-input {
+  border-radius: none;
+  border: cadetblue solid;
+  padding: 10px;
+  margin: 10px;
+  height: 15%;
+  width: 75%;
+  margin-top: 20px;
+} */
+
+.planner-list {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  height: 68%;
+  width: 400px;
+  text-align: center;
+  margin: auto;
+  margin-top: 10%;
+  padding: 20px;
+  box-shadow: 7px 7px 15px #bbcfda,-4px -4px 13px #fff, inset 4px 4px 8px rgba(209, 217, 230, 0.2),  inset -8px -8px 8px rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3); 
+  background: #e8eff5;
+}
+
+.planner-header h1 {
+  text-align: center;
+  font-family: 'Monoton', cursive;
+  font-size: 50pt;
+  margin-top: 30pt;
+}
+
+.planner-card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+
+.plannerbtn {
+display: inline-block;
+margin: 10px;
+outline: 0;
+border: 0;
+cursor: pointer;
+color: #fff;
+font-weight: 500;
+border-radius: 4px;
+font-size: 14px;
+height: 30px;
+padding: 0px 15px;
+text-shadow: rgb(0 0 0 / 25%) 0px 3px 8px;
+background: linear-gradient(92.88deg, rgb(69, 94, 181) 9.16%, rgb(86, 67, 204) 43.89%, rgb(103, 63, 215) 64.72%);
+transition: all 0.5s ease 0s;
+}
+
+.plannerbtn:hover {
+    box-shadow: rgb(80 63 205 / 50%) 0px 1px 40px;
+    transition: all 0.1s ease 0s;
+}
+
+.map-header h1 {
+  text-align: center;
+  font-family: 'Monoton', cursive;
+  font-size: 50pt;
+  margin-top: 30pt;
+}
