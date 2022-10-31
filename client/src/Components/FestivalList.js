@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
+// import { useHistory } from 'react-router-dom';
 // import { FestivalsContext } from '../GlobalContext/FestivalsProvider';
 import FestivalListCard from './FestivalListCard';
 

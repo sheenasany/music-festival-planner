@@ -3,7 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 
 function FestivalCard({ user }) {
 
-    // useParams allows the use of the festival's id in fetch request
+    // useParams allows the use of the festival's id in get request
     let {id} = useParams()
 
     // allows the use of routes and the ability to push to routes
@@ -51,6 +51,7 @@ function FestivalCard({ user }) {
             <style>
                 @import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
             </style>
+
             {/* if festInfo is not an empty string, load the information, if not load null */}
             {festInfo !== null ? 
             <div className="festcard-header">

@@ -25,19 +25,22 @@ function PlannerCard({ planner, planners, setPlanners }) {
     // debugger
     return(
       <>
-            {isUpdating ? 
-                <UpdatePlannerForm planner={planner} planners={planners} setPlanners={setPlanners} handleUpdateToggle={handleUpdateToggle}  /> : 
+        {isUpdating ? 
+          <UpdatePlannerForm planner={planner} planners={planners} setPlanners={setPlanners} handleUpdateToggle={handleUpdateToggle}  /> : 
             <div className="planner-list">
-             <h1>{planner.festival.name} || {planner.festival.date}</h1>
-             <p>Budget: ${planner.budget}</p>
-             <p>Transportation: {planner.transportation}</p>
-             <p>Lodging: {planner.lodging}</p>
-             <p>Friends Attending: {planner.friends_attending}</p>
-             <p>Additional Notes: {planner.additional_notes}</p>
-             <button className="plannerbtn" onClick={handleUpdateToggle}>Update Planner</button>
-             <button className="plannerbtn" onClick={handleDelete}>Delete Planner</button>
-             </div>}
-    </>
+              <h1>{planner.festival.name}</h1>
+              <h3>{planner.festival.date}</h3>
+              <p>Budget: ${planner.budget}</p>
+              <p>Transportation: {planner.transportation}</p>
+              <p>Lodging: {planner.lodging}</p>
+              <p>Friends Attending: {planner.friends_attending}</p>
+              <p>Additional Notes: {planner.additional_notes}</p>
+                <div className="botones">
+                  <button className="plannerbtn" onClick={handleUpdateToggle}>Update Planner</button>
+                  <button className="plannerbtn" onClick={handleDelete}>Delete Planner</button>
+                </div>
+            </div>}
+      </>
     )
 }
 

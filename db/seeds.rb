@@ -14,7 +14,7 @@ m4 = Marker.create(city: "Pelham", state: "Tennesse", latitude: "35.316970", lon
 m5 = Marker.create(city: "Las Vegas", state: "Nevada", latitude: "36.169941", longitude: "-115.139832")
 m6 = Marker.create(city: "Austin", state: "Texas", latitude: "30.2711286", longitude: "-97.7436995")
 m7 = Marker.create(city: "Live Oak", state: "Florida", latitude: "30.2949457", longitude: "-82.98402")
-m8 = Marker.create(city: "Orlando", state: "Florida", latitude: "40.741895", longitude: "-73.989308")
+m8 = Marker.create(city: "Orlando", state: "Florida", latitude: "28.538336", longitude: "-81.379234")
 m9 = Marker.create(city: "Seattle", state: "Washington", latitude: "47.6038321", longitude: "-122.330062")
 m10 = Marker.create(city: "Tucson", state: "Arizona", latitude: "32.2228765", longitude: "-110.9748477")
 

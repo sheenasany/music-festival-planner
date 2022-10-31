@@ -10,7 +10,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider, responsiveFontSizes } from '@mui/material/styles';
 // React imports
 import React, {useState} from 'react';
 import { useHistory } from 'react-router-dom';
@@ -29,7 +29,17 @@ function Copyright() {
 }
 
 function FestivalListCard({festivals}) {
-    const theme = createTheme();
+  let theme = createTheme({
+    typography: {
+      fontFamily: 'SairaCondensed-Medium',
+    }
+  })
+
+  // theme.typography.h1 ={
+  //   fontFamily: 'Monoton'
+  // }
+
+  theme = responsiveFontSizes(theme)
     let history = useHistory()
     // let {id} = useParams()
         
@@ -145,16 +155,18 @@ let allFilters = festivals.filter(filteredGenre => {
                     alt="Festival Poster"
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
+                    <Typography  gutterBottom variant="h5" component="h2">
                       {festival.name}
                     </Typography>
+                    <Typography >
+                      {festival.date}
+                    </Typography>
                     <Typography>
-                      
-                      {festival.date} || {festival.marker.address}
+                    {festival.marker.address}
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" onClick={() => handleFestivalCardPush(festival)}>View Details</Button>
+                    <Button size="medium" onClick={() => handleFestivalCardPush(festival)}>View Details</Button>
                     <Button onClick={handleMapToggle} size="small">Show Map</Button>
                   </CardActions>
                 </Card>

@@ -100,7 +100,7 @@ function FestivalMap(){
  // after the user clicks on a marker, show popup for the selected Festival
  let showSelectedFestPopup = () => {
      if (selectedFest) {
-        console.log(selectedFest)
+        // console.log(selectedFest)
         // debugger
         return (
             <Popup
@@ -110,7 +110,7 @@ function FestivalMap(){
                     setSelectedFest(null)
                 }}
             >
-                <div>
+                <div className='popup-div'>
                     {/* nested data needed square brackets*/}
                     <h3>{selectedFest.festivals[0].name}</h3>
                     <h4>{selectedFest.festivals[0].date}</h4>

@@ -1,16 +1,35 @@
+/* @font-face {
+  font-family: 'Prisma';
+  src: url('./Fonts/Prisma.ttf') format("truetype");
+  font-weight: bold;
+} */
+
+@font-face {
+  font-family: 'SairaCondensed-Medium';
+  src: url('./Fonts/SairaCondensed-Medium.ttf') format("truetype");
+  /* font-weight: bold; */
+}
+
+@font-face {
+  font-family: 'Monoton';
+  src: url('./Fonts/Monoton-Regular.ttf') format("truetype");
+  /* font-weight: bold; */
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
+  font-family: 'SairaCondensed-Medium';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+  monospace;
+} */
 
 nav {
   background-color: #367ec7;
@@ -22,7 +41,8 @@ nav a {
   margin: 1rem;
   margin-left: 3rem;
   text-decoration: none;
-  font-size: 1.2em;
+  font-family: 'SairaCondensed-Medium';
+  font-size: 1.7em;
   color: #ffff;
   border-bottom: 2px solid #115374;
   transition: 0.1s;
@@ -42,6 +62,7 @@ nav a:active {
 }
 .home:hover {
   background-size: 100% 100%;
+  border-radius: 5px;
 }
 
 .loginnav {
@@ -52,6 +73,7 @@ nav a:active {
 }
 .loginnav:hover {
   background-size: 100% 100%;
+  border-radius: 5px;
 }
 
 .signupnav {
@@ -62,6 +84,7 @@ nav a:active {
 }
 .signupnav:hover {
   background-size: 100% 100%;
+  border-radius: 5px;
 }
 
 .plannernav {
@@ -72,6 +95,7 @@ nav a:active {
 }
 .plannernav:hover {
   background-size: 100% 100%;
+  border-radius: 5px;
 }
 
 .festivalnav {
@@ -82,12 +106,13 @@ nav a:active {
 }
 .festivalnav:hover {
   background-size: 100% 100%;
+  border-radius: 5px;
 }
 
 .logout {
   float: right; 
   display: inline-block;
-  margin-top: 13.5px;
+  margin-top: 15px;
   margin-right: 50px;
   display: inline-block;
   outline: 0;
@@ -95,8 +120,9 @@ nav a:active {
   cursor: pointer;
   color: #fff;
   font-weight: 500;
+  font-family: 'SairaCondensed-Medium';
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 15.5px;
   height: 30px;
   padding: 0px 15px;
   text-shadow: rgb(0 0 0 / 25%) 0px 3px 8px;
@@ -104,16 +130,19 @@ nav a:active {
   transition: all 0.5s ease 0s;
 }
 
+.css-1s6uc0e-MuiTypography-root {
+  font-family: 'Monoton' !important;
+}
+
 .festcard-header h1, h3 {
   text-align: center;
 }
 
 .festcard-header h3 {
-  font-size: 18pt;
+  font-size: 20pt;
 }
 
 .festcard-header h1 {
-  font-family: 'Monoton', cursive;
   font-size: 50pt;
   margin-top: auto;
 }
@@ -129,10 +158,16 @@ nav a:active {
   margin-top: 20px;
 }
 
+.css-homxms-MuiCardMedia-root {
+  height: 100%;
+  width: 100%;
+}
+
 .info {
   display: inline-block;
   justify-content: right;
   text-align: center;
+  font-family: 'SairaCondensed-Medium';
   margin-left: 200px;
   margin-bottom: 10px;
   margin-top: 60px;
@@ -141,7 +176,6 @@ nav a:active {
   height: 50%;
   width: 25%;
   font-size: large;
-  /* border: cadetblue solid; */
   padding: 20px;
   box-shadow: 7px 7px 15px #bbcfda,-4px -4px 13px #fff, inset 4px 4px 8px rgba(209, 217, 230, 0.2),  inset -8px -8px 8px rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.3); 
@@ -196,7 +230,8 @@ nav a:active {
   justify-content: center;
   align-items: center;
   height: 500px;
-  font-family: 'Monoton', cursive;
+   /* font-family: 'Prisma'; */
+  font-family: 'Monoton', cursive; 
   font-size: 100px;
   margin: auto;
 }
@@ -259,7 +294,8 @@ cursor: pointer;
 color: #fff;
 font-weight: 500;
 border-radius: 4px;
-font-size: 14px;
+font-size: 16px;
+font-family: 'SairaCondensed-Medium';
 height: 30px;
 padding: 0px 15px;
 text-shadow: rgb(0 0 0 / 25%) 0px 3px 8px;
@@ -270,6 +306,18 @@ transition: all 0.5s ease 0s;
 .le-map {
   display: flex;
   justify-content: center;
+}
+
+.popup-div h3 {
+  font-family:'SairaCondensed-Medium';
+}
+
+.popup-div h4 {
+  font-family:'SairaCondensed-Medium';
+}
+
+.popup-div p {
+  font-family:'SairaCondensed-Medium';
 }
 
 .genre-filter {
@@ -342,6 +390,8 @@ textarea {
   height: 68%;
   width: 400px;
   text-align: center;
+  font-family: 'SairaCondensed-Medium';
+  font-size: 12pt;
   margin: auto;
   margin-top: 10%;
   padding: 20px;
@@ -349,6 +399,15 @@ textarea {
   border: 1px solid rgba(255, 255, 255, 0.3); 
   background: #e8eff5;
 }
+
+.planner-list h1 {
+  font-family: 'SairaCondensed-Medium';
+}
+
+.planner-list h3 {
+  font-family: 'SairaCondensed-Medium';
+}
+
 
 .planner-header h1 {
   text-align: center;
@@ -373,7 +432,8 @@ cursor: pointer;
 color: #fff;
 font-weight: 500;
 border-radius: 4px;
-font-size: 14px;
+font-size: 16px;
+font-family: 'SairaCondensed-Medium';
 height: 30px;
 padding: 0px 15px;
 text-shadow: rgb(0 0 0 / 25%) 0px 3px 8px;
@@ -384,6 +444,11 @@ transition: all 0.5s ease 0s;
 .plannerbtn:hover {
     box-shadow: rgb(80 63 205 / 50%) 0px 1px 40px;
     transition: all 0.1s ease 0s;
+}
+
+.botones {
+  display: flex;
+  justify-content: center;
 }
 
 .map-header h1 {

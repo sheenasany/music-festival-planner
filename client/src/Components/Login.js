@@ -11,7 +11,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider, responsiveFontSizes } from '@mui/material/styles';
 // React imports
 import { useHistory } from "react-router-dom";
 import React, {  useState } from "react";
@@ -37,7 +37,14 @@ function Login({user, setUser}) {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState() 
     
-    const theme = createTheme();
+    // handles the font in theme 
+    let theme = createTheme({
+      typography: {
+        fontFamily: 'SairaCondensed-Medium',
+      }
+    })
+    theme = responsiveFontSizes(theme)
+
      let history = useHistory()
 
     const handleSubmit = (event) => {
@@ -67,6 +74,16 @@ function Login({user, setUser}) {
 })
 history.push('/');
 };
+
+  // handles show password change
+  function handleShowPassword() {
+    let x = document.getElementById("myInput");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
 
   return (
     <ThemeProvider theme={theme}>

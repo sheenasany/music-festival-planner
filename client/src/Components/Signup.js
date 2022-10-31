@@ -11,7 +11,8 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider, responsiveFontSizes } from '@mui/material/styles';
+
 // React imports
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
@@ -27,7 +28,7 @@ function Copyright(props) {
         {new Date().getFullYear()}
         {'.'}
       </Typography>
-    );
+    )
   }
   
   function Signup({user, setUser}) {
@@ -37,11 +38,18 @@ function Copyright(props) {
       const [isLoading, setIsLoading] = useState(false)
       const [error, setError] = useState() 
       
-      const theme = createTheme();
+      let theme = createTheme({
+        typography: {
+          fontFamily: 'SairaCondensed-Medium',
+        }
+      })
+
+      theme = responsiveFontSizes(theme)
+
        let history = useHistory()
   
       const handleSubmit = (event) => {
-      event.preventDefault();
+      event.preventDefault()
   
       let userInfo = {
           username: username,
