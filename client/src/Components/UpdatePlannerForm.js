@@ -1,14 +1,19 @@
+import { integerPropType } from '@mui/utils';
 import React, {useState} from 'react';
 import {FcUndo} from "react-icons/fc";
+import { 
+    Button, 
+    Form,
+    Input,
+    TextArea, 
+    Header, 
+    Icon, 
+    Modal } from 'semantic-ui-react'
 
-function UpdatePlannerForm({ setPlanners, planner, handleUpdateToggle }) {
-    
-    const [isCancel, setIsCancel] = useState(false)
+function UpdatePlannerForm({ setPlanners, planner }) {
 
-    // function to handle cancel form toggle 
-    const handleCancelToggle = () => {
-        setIsCancel(!isCancel);
-    }
+    // handles modal open/close functionality
+    const [open, setOpen] = useState(false)
 
     // declaring the initial state of the form fields
     const initialState = {
@@ -54,61 +59,72 @@ const handleUpdateSubmit = (e) => {
         .then(data => onUpdatePlanner(data))
 
         // reverts form back to list view        
-        handleUpdateToggle()
+        // handleUpdateToggle()
+        setOpen(false)
+        alert('Your planner has been updated successfully.')
   }
+
 
     return(
         <div className='plannerUpdateForm'>
-            <form onSubmit={handleUpdateSubmit}>
-            <FcUndo className="cancelbtn" onClick={() => handleUpdateToggle()}/>
-            <div>
-                <label>What's your budget?</label>
-                <input 
-                    type="number"
-                    name="budget"
-                    value={budget}
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label>How are you getting to the festival?</label>
-                <select name="transportation" value={transportation}  onChange={handleChange}>
-                   <option value="Car" name="Car">Car</option>
-                   <option value="Plane" name="Plane">Plane</option>
-                   <option value="Train" name="Train">Train</option>
-                   <option value="Boat" name="Boat">By Sea</option>
-                   <option value="Walking" name="Walking">My own two feet</option>
-                </select>
-            </div>
-            <div>
-                <label>Where are you staying?</label>
-                <input 
-                    type="text"
-                    name="lodging"
-                    value={lodging}
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label>Who are you going with?</label>
-                <input 
-                    type="text"
-                    name="friends_attending"
-                    value={friends_attending}
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label>Anything else?</label>
-                <input 
-                    type="textarea"
+        <Modal
+            closeIcon
+            open={open}
+            trigger={
+                <button className="plannerbtn">Update Planner</button>}
+            onClose={() => setOpen(false)}
+            onOpen={() => setOpen(true)}
+        >            
+            <Modal.Content>
+                <Form onSubmit={handleUpdateSubmit}>
+                    <Form.Field
+                        control={Input}
+                        label="What's your budget?"
+                        placeholder="Budget"
+                        type="number"
+                        name="budget"
+                        value={budget}
+                        onChange={handleChange}
+                    />
+                    <Form.Field>
+                        <label>'How are you getting there?'</label>
+                        <select name="transportation" value={transportation}  onChange={handleChange}>
+                            <option></option>
+                            <option value="Car" name="Car">Car</option>
+                            <option value="Plane" name="Plane">Plane</option>
+                            <option value="Train" name="Train">Train</option>
+                            <option value="Boat" name="Boat">By Sea</option>
+                            <option value="Walking" name="Walking">My own two feet</option>
+                        </select>
+                    </Form.Field>
+                    <Form.Field
+                        control={Input}
+                        label="Where are you staying?"
+                        placeholder="Lodging"
+                        name="lodging"
+                        value={lodging}
+                        onChange={handleChange}
+                    />
+                    <Form.Field
+                        control={Input}
+                        label="Who are you going with?"
+                        placeholder="People attending"
+                        name="friends_attending"
+                        value={friends_attending}
+                        onChange={handleChange}
+                    />
+                    <Form.Field
+                    control={TextArea}
+                    label="Anything else?"
+                    placeholder="Fill to your heart's content..."
                     name="additional_notes"
                     value={additional_notes}
                     onChange={handleChange}
-                />
-            </div>
-                <button className="plannerbtn" type="submit">Update Planner</button>
-            </form>
+                    />
+                    <Form.Button type="submit" content="Submit Update"/>             
+                </Form>
+            </Modal.Content>
+        </Modal>
         </div>
     )
 }

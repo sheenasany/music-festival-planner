@@ -29,29 +29,26 @@ function Copyright() {
 }
 
 function FestivalListCard({festivals}) {
-  let theme = createTheme({
-    typography: {
-      fontFamily: 'SairaCondensed-Medium',
-    }
-  })
 
-  // theme.typography.h1 ={
-  //   fontFamily: 'Monoton'
-  // }
+// theme to handle font
+let theme = createTheme({
+  typography: {
+    fontFamily: 'SairaCondensed-Medium',
+  }
+})
 
-  theme = responsiveFontSizes(theme)
-    let history = useHistory()
-    // let {id} = useParams()
+theme = responsiveFontSizes(theme)
+let history = useHistory()
         
-    const handleMapToggle = () => {
-            history.push('/map')
-        }
-// debugger
-    const handleFestivalCardPush = (festival) => {
-            history.push(`/festivals/${festival.id}`)
-        }
+const handleMapToggle = () => {
+  history.push('/map')
+}
 
-        // initialized state for filtered arrays
+const handleFestivalCardPush = (festival) => {
+  history.push(`/festivals/${festival.id}`)
+}
+
+// initialized state for filtered arrays
 const [selectedGenre, setSelectedGenre] = useState("")
 const [hasCamping, setHasCamping] = useState("")
 
@@ -76,13 +73,10 @@ let allFilters = festivals.filter(filteredGenre => {
         // may add average ticket and average attendance.filter() later
     }) 
 
-
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <main>
-        {/* Hero unit */}
         <Box
           sx={{
             bgcolor: 'background.paper',
@@ -98,9 +92,6 @@ let allFilters = festivals.filter(filteredGenre => {
               color="text.primary"
               gutterBottom
             >
-              <style>
-@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
-</style>
               Festival List
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
@@ -139,7 +130,6 @@ let allFilters = festivals.filter(filteredGenre => {
             </Box>
 
         <Container sx={{ py: 1 }} maxWidth="md">
-          {/* End hero unit */}
           <Grid container spacing={4}>
             {allFilters.map((festival) => (
               <Grid item key={festival.id} xs={12} sm={6} md={4}>

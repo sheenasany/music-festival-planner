@@ -13,7 +13,7 @@ import UpdatePlannerForm from './Components/UpdatePlannerForm';
 
 function App() {
 
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState(null)
   const [planners, setPlanners] = useState([])
   const [newPlan, setNewPlan] = useState()
 
@@ -31,20 +31,20 @@ function App() {
     })
   }, [])
 
-  const handleLogout = () => {
-    fetch("/logout", {
-      method: "DELETE",
-    })
-      .then(res => {
-        if (res.ok) {
-          setUser(null);
-          setPlanners([])
+  // const handleLogout = () => {
+  //   fetch("/logout", {
+  //     method: "DELETE",
+  //   })
+  //     .then(res => {
+  //       if (res.ok) {
+  //         setUser(null);
+  //         setPlanners([])
           
-          history.push("/")
-        }
-      })
-    // debugger
-  }
+  //         history.push("/")
+  //       }
+  //     })
+  //   // debugger
+  // }
 
   useEffect(() => {
     fetch('/planners')
@@ -70,7 +70,7 @@ function App() {
 
   return (
     <div className="App">
-        <NavBar setUser={setUser} user={user} handleLogout={handleLogout} />
+        <NavBar setUser={setUser} user={user} setPlanners={setPlanners} />
           <Switch>
             <Route exact path="/">
              <Homepage />

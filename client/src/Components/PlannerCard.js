@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import UpdatePlannerForm from "./UpdatePlannerForm";
 
 function PlannerCard({ planner, planners, setPlanners }) {
 
-    const [isUpdating, setIsUpdating] = useState(false)
+    // const [isUpdating, setIsUpdating] = useState(false)
 
     // function to handle update form toggle 
-    const handleUpdateToggle = () => {
-        setIsUpdating(!isUpdating);
-    }
+    // const handleUpdateToggle = () => {
+    //     setIsUpdating(!isUpdating);
+    // }
 
     //function to handle delete
       const onDeletePlanner = (id) => {
@@ -20,13 +20,12 @@ function PlannerCard({ planner, planners, setPlanners }) {
             method: "DELETE"
         })
         onDeletePlanner(planner.id)
+        alert('Planner has been successfully deleted.')
+
       };
 
-    // debugger
     return(
       <>
-        {isUpdating ? 
-          <UpdatePlannerForm planner={planner} planners={planners} setPlanners={setPlanners} handleUpdateToggle={handleUpdateToggle}  /> : 
             <div className="planner-list">
               <h1>{planner.festival.name}</h1>
               <h3>{planner.festival.date}</h3>
@@ -35,11 +34,13 @@ function PlannerCard({ planner, planners, setPlanners }) {
               <p>Lodging: {planner.lodging}</p>
               <p>Friends Attending: {planner.friends_attending}</p>
               <p>Additional Notes: {planner.additional_notes}</p>
-                <div className="botones">
-                  <button className="plannerbtn" onClick={handleUpdateToggle}>Update Planner</button>
+                {/* <div className="botones"> */}
+                {/* updateplannerform now acts as a button for modal, shows 
+                    the form instead when update planner btn is triggered */}
+                  <UpdatePlannerForm planner={planner} planners={planners} setPlanners={setPlanners} /> 
+                  {/* <button className="plannerbtn" onClick={handleUpdateToggle}>Update Planner</button> */}
                   <button className="plannerbtn" onClick={handleDelete}>Delete Planner</button>
-                </div>
-            </div>}
+            </div>
       </>
     )
 }

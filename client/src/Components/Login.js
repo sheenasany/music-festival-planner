@@ -47,6 +47,9 @@ function Login({user, setUser}) {
 
      let history = useHistory()
 
+     // handles initial post request combining the join table of festival id and user id
+     // to the planner table 
+     // then goes back to the previous page if sent to login from festival card
     const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -72,21 +75,12 @@ function Login({user, setUser}) {
     .then(json => setError(json.error))
   }
 })
-history.push('/');
+  history.goBack()
 };
 
-  // handles show password change
-  function handleShowPassword() {
-    let x = document.getElementById("myInput");
-    if (x.type === "password") {
-      x.type = "text";
-    } else {
-      x.type = "password";
-    }
-  }
 
-  return (
-    <ThemeProvider theme={theme}>
+return (
+  <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
         <Grid
@@ -98,11 +92,11 @@ history.push('/');
             backgroundImage: 'url(https://st.depositphotos.com/1037987/4846/i/600/depositphotos_48463529-stock-photo-outdoor-music-festival.jpg)',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
-              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+            t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
-        />
+          />
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <Box
             sx={{
@@ -131,7 +125,7 @@ history.push('/');
                 onChange={(e) => setUserName(e.target.value)}
                 autoComplete="username"
                 autoFocus
-              />
+                />
               <TextField
                 margin="normal"
                 required
@@ -143,11 +137,11 @@ history.push('/');
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 autoComplete="current-password"
-              />
+                />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
-              />
+                />
               <Button
                 type="submit"
                 fullWidth
@@ -173,3 +167,33 @@ history.push('/');
 }
 
 export default Login;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // handles show password change
+// function handleShowPassword() {
+//   let x = document.getElementById("myInput");
+//   if (x.type === "password") {
+//     x.type = "text";
+//   } else {
+//     x.type = "password";
+//   }
+// }

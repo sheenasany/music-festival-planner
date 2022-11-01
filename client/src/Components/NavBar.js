@@ -1,10 +1,24 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 // import { UserContext } from "../GlobalContext/UserProvider";
 import React from "react";
 
-function NavBar({user, handleLogout }) {
-  // let history = useHistory();
+function NavBar({user, setUser, setPlanners, }) {
+  let history = useHistory();
   
+  const handleLogout = () => {
+    fetch("/logout", {
+      method: "DELETE",
+    })
+      .then(res => {
+        if (res.ok) {
+          setUser(null);
+          setPlanners([])
+          
+          history.push("/")
+        }
+      })
+    // debugger
+  }
   
   // calling the user context component 
   // let [user, setUser] = useContext(UserContext);

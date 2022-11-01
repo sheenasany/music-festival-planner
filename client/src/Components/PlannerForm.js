@@ -1,8 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import { useParams, useHistory } from 'react-router-dom';
+import { Button, Header, Icon, Modal } from 'semantic-ui-react'
 
 function PlannerForm({ setNewPlan, newPlan, addNewPlanner }) {
     
+    const [open, setOpen] = useState(false)
+
     let {id} = useParams()
     let history = useHistory()
 
@@ -74,7 +77,15 @@ function PlannerForm({ setNewPlan, newPlan, addNewPlanner }) {
                             </div>
                         </div>  
                     </div> : null}
-            <div className='festform'>
+        <Modal
+            closeIcon
+            open={open}
+            trigger={<Button>Show Modal</Button>}
+            onClose={() => setOpen(false)}
+            onOpen={() => setOpen(true)}
+        >            
+            {/* <div className='festform'> */}
+            <Modal.Content>
             <form onSubmit={handleFormSubmit}>
             <div >
                 <input 
@@ -127,7 +138,9 @@ function PlannerForm({ setNewPlan, newPlan, addNewPlanner }) {
             </div>
                 <button className="plannerbtn" type="submit">Add New Planner</button>
             </form>
-        </div>
+            </Modal.Content>
+        {/* </div> */}
+        </Modal>
     </div>
     )
 }
