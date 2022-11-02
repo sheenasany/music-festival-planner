@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { Switch, Route, useHistory } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Login from './Components/Login';
 import Signup from './Components/Signup';
 import NavBar from './Components/NavBar';
@@ -17,9 +17,8 @@ function App() {
   const [planners, setPlanners] = useState([])
   const [newPlan, setNewPlan] = useState()
 
-  let history = useHistory()
-
-  // console.log(useHistory())
+  // open modal window
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
     fetch("/me")
@@ -30,21 +29,6 @@ function App() {
       }
     })
   }, [])
-
-  // const handleLogout = () => {
-  //   fetch("/logout", {
-  //     method: "DELETE",
-  //   })
-  //     .then(res => {
-  //       if (res.ok) {
-  //         setUser(null);
-  //         setPlanners([])
-          
-  //         history.push("/")
-  //       }
-  //     })
-  //   // debugger
-  // }
 
   useEffect(() => {
     fetch('/planners')
@@ -81,12 +65,11 @@ function App() {
             <Route exact path="/login">
               <Login  user={user} setUser={setUser} />
             </Route>
-          {/* <FestivalsProvider> */}
             <Route exact path="/festivals">
             <FestivalList festivals={festivals} />
             </Route>
             <Route exact path="/festivals/:id">
-              <FestivalCard setPlanners={setPlanners} planners={planners} user={user} />
+              <FestivalCard setPlanners={setPlanners} planners={planners} user={user} setOpen={setOpen} />
             </Route>
             <Route path="/map">
               <FestivalMap />
@@ -98,12 +81,14 @@ function App() {
               <PlannerForm 
                 setNewPlan={setNewPlan} 
                 newPlan={newPlan}
-                addNewPlanner={addNewPlanner} />
+                addNewPlanner={addNewPlanner}
+                open={open}
+                setOpen={setOpen} 
+                />
             </Route>
             <Route exact path="/planner_form">
               <UpdatePlannerForm />
             </Route>
-          {/* </FestivalsProvider> */}
         </Switch>
     </div>
   );

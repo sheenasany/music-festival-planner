@@ -10,9 +10,6 @@ function PlannerList({ planners, setPlanners }){
   
     return(
         <div >
-        <style>
-          @import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
-        </style>
         <div className="planner-header">
           <h1>Planner List</h1>
         </div>

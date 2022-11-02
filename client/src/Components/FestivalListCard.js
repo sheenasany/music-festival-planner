@@ -66,10 +66,10 @@ let allFilters = festivals.filter(filteredGenre => {
         return (selectedGenre === filteredGenre.genre)})
         .filter(filteredCamp => {
             if (hasCamping === "") return true
-         else if (hasCamping === "true")
-            return (filteredCamp.has_camping)
-            else if (hasCamping === "false")
-            return (!filteredCamp.has_camping)
+              else if (hasCamping === "true")
+              return (filteredCamp.has_camping)
+              else if (hasCamping === "false")
+              return (!filteredCamp.has_camping)
         // may add average ticket and average attendance.filter() later
     }) 
 

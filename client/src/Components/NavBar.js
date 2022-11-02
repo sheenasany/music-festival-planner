@@ -1,10 +1,10 @@
 import { NavLink, useHistory } from "react-router-dom";
-// import { UserContext } from "../GlobalContext/UserProvider";
 import React from "react";
 
 function NavBar({user, setUser, setPlanners, }) {
   let history = useHistory();
   
+  // fetch to handle user session logout
   const handleLogout = () => {
     fetch("/logout", {
       method: "DELETE",
@@ -19,18 +19,12 @@ function NavBar({user, setUser, setPlanners, }) {
       })
     // debugger
   }
-  
-  // calling the user context component 
-  // let [user, setUser] = useContext(UserContext);
 
-  // fetch to handle user session logout
-
-//  debugger
   return (
     <nav>
       {/* if there is not a current user, show these links, if yes, show the logged in links */}
       {user ? (
-        <div>
+        <div className="navie">
           <NavLink className="home" exact to="/">
             Home
           </NavLink>
@@ -40,13 +34,11 @@ function NavBar({user, setUser, setPlanners, }) {
           <NavLink className="plannernav" exact to="/planner_list">
             Festival Planner
           </NavLink>
-          {/* <div className="logout-btn" >  */}
           <button className="logout" onClick={handleLogout}>
             Logout
           </button>
-          {/* </div> */}
         </div> ) :
-        ( <div>
+        ( <div className="navie">
           <NavLink className="home" exact to="/">
             Home
           </NavLink>

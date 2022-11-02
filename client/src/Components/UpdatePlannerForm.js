@@ -1,13 +1,9 @@
-import { integerPropType } from '@mui/utils';
+// import { integerPropType } from '@mui/utils';
 import React, {useState} from 'react';
-import {FcUndo} from "react-icons/fc";
 import { 
-    Button, 
     Form,
     Input,
     TextArea, 
-    Header, 
-    Icon, 
     Modal } from 'semantic-ui-react'
 
 function UpdatePlannerForm({ setPlanners, planner }) {
@@ -30,14 +26,14 @@ function UpdatePlannerForm({ setPlanners, planner }) {
     
     //   function to update the planner in update planner form
     const onUpdatePlanner = (updatedPlanner) => {
-      setPlanners(planners => planners.map(planner => {
+    setPlanners(planners => planners.map(planner => {
         if (planner.id === updatedPlanner.id) {
-          return updatedPlanner;
+        return updatedPlanner;
         } else {
-          return planner;
+        return planner;
         }
-      }))
-    };
+    }))
+};
 
     // handling the user input on change
     const handleChange = (e) => {
@@ -52,8 +48,8 @@ const handleUpdateSubmit = (e) => {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'
-        },
-          body: JSON.stringify(formData)
+            },
+        body: JSON.stringify(formData)
         })
         .then(res => res.json())
         .then(data => onUpdatePlanner(data))
@@ -62,16 +58,15 @@ const handleUpdateSubmit = (e) => {
         // handleUpdateToggle()
         setOpen(false)
         alert('Your planner has been updated successfully.')
-  }
+    }
 
 
     return(
-        <div className='plannerUpdateForm'>
         <Modal
             closeIcon
             open={open}
             trigger={
-                <button className="plannerbtn">Update Planner</button>}
+                <button className="plannerbtn-update">Update Planner</button>}
             onClose={() => setOpen(false)}
             onOpen={() => setOpen(true)}
         >            
@@ -87,7 +82,7 @@ const handleUpdateSubmit = (e) => {
                         onChange={handleChange}
                     />
                     <Form.Field>
-                        <label>'How are you getting there?'</label>
+                        <label>How are you getting there?</label>
                         <select name="transportation" value={transportation}  onChange={handleChange}>
                             <option></option>
                             <option value="Car" name="Car">Car</option>
@@ -121,11 +116,11 @@ const handleUpdateSubmit = (e) => {
                     value={additional_notes}
                     onChange={handleChange}
                     />
-                    <Form.Button type="submit" content="Submit Update"/>             
+                    <button className="plannerbtn" type="submit">Submit Update</button>
+                    {/* <Form.Button type="submit" content="Submit Update"/>*/}
                 </Form>
             </Modal.Content>
         </Modal>
-        </div>
     )
 }
 

@@ -45,11 +45,9 @@ function Login({user, setUser}) {
     })
     theme = responsiveFontSizes(theme)
 
-     let history = useHistory()
+    let history = useHistory()
 
-     // handles initial post request combining the join table of festival id and user id
-     // to the planner table 
-     // then goes back to the previous page if sent to login from festival card
+     // handles user login then pushes to festivals list
     const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -75,7 +73,7 @@ function Login({user, setUser}) {
     .then(json => setError(json.error))
   }
 })
-  history.goBack()
+  history.push('/festivals')
 };
 
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 
-function FestivalCard({ user }) {
+function FestivalCard({ user, setOpen }) {
 
     // useParams allows the use of the festival's id in get request
     let {id} = useParams()
@@ -20,9 +20,10 @@ function FestivalCard({ user }) {
     }, [])
 
     // console.log(festInfo)
-    // Async and Await Initial Post request of planner to join festival id and user id 
+    // Async and Await Initial Post request of planner to join festival id and user id on the onClick
+    // then pushes to the newly created individual planner and opens modal planner form for 1st patch request
     const handleAddPlanner = async() => {
-       
+    
         const res = await fetch('/planners', {
             method: 'POST',
             headers: {
@@ -44,14 +45,13 @@ function FestivalCard({ user }) {
             history.push(`/planners/${data.id}`)
         }
         redirect(data)
+        setOpen(true)
     }
+    // curly brackets will create object w/key value pairs
+    // console.log({user})
 
     return(
         <div className="container">
-            <style>
-                @import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
-            </style>
-
             {/* if festInfo is not an empty string, load the information, if not load null */}
             {festInfo !== null ? 
             <div className="festcard-header">
@@ -64,10 +64,10 @@ function FestivalCard({ user }) {
                         <p>Average Price Range : ${festInfo.average_ticket_price}</p>
                         <p>Genre : {festInfo.genre}</p>
                         <div className="festurl">
-                        <a href={festInfo.link}>Festival URL</a>
+                        <a href={festInfo.link} target="_blank" rel="noopener noreferrer">Festival URL</a>
                         </div>
             {/* if there is a current user, show planner button, if not show login option */}
-                {user ? 
+                {user  ? 
                     <button className="plannerbtn" onClick={handleAddPlanner}>Add Festival to Planner</button> : 
                     <div>Wanna add this to your planner? <a href="/login">Log In</a></div>}
             </div>

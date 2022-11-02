@@ -26,10 +26,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-  monospace;
-} */
+.navie {
+  display: block;
+  height: 57px;
+  line-height: 20px;
+}
 
 nav {
   background-color: #367ec7;
@@ -47,12 +48,6 @@ nav a {
   border-bottom: 2px solid #115374;
   transition: 0.1s;
 }
-
-/* nav a:hover,
-nav a:active {
-  color: #114673;
-  border-bottom: 2px solid #ffff;
-} */
 
 .home {
   background-image: linear-gradient(#c48cd4,#73c0da);
@@ -340,7 +335,7 @@ transition: all 0.5s ease 0s;
   margin-right: 220pt;
 }
 
-.plannerUpdateForm {
+/* .plannerUpdateForm {
   display: flex;
   flex-direction: column;
   width: fit-content;
@@ -352,7 +347,7 @@ transition: all 0.5s ease 0s;
   box-shadow: 7px 7px 15px #bbcfda,-4px -4px 13px #fff, inset 4px 4px 8px rgba(209, 217, 230, 0.2),  inset -8px -8px 8px rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.3); 
   background: #e8eff5;
-}
+} */
 
 /* textarea {
   border-radius: 8em;
@@ -433,6 +428,29 @@ transition: all 0.5s ease 0s;
 .plannerbtn:hover {
     box-shadow: rgb(80 63 205 / 50%) 0px 1px 40px;
     transition: all 0.1s ease 0s;
+}
+
+.plannerbtn-update {
+  display: inline-block;
+  margin: 10px;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: 'SairaCondensed-Medium';
+  height: 30px;
+  padding: 0px 15px;
+  text-shadow: rgb(0 0 0 / 25%) 0px 3px 8px;
+  background: linear-gradient(92.88deg, rgb(69, 94, 181) 9.16%, rgb(86, 67, 204) 43.89%, rgb(103, 63, 215) 64.72%);
+  transition: all 0.5s ease 0s;
+}
+
+.plannerbtn-update:hover {
+  box-shadow: rgb(80 63 205 / 50%) 0px 1px 40px;
+  transition: all 0.1s ease 0s; 
 }
 
 .botones {

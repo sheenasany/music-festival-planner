@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { Button, Header, Icon, Modal } from 'semantic-ui-react'
+import { 
+    Form,
+    Input,
+    TextArea, 
+    Modal } from 'semantic-ui-react'
 
-function PlannerForm({ setNewPlan, newPlan, addNewPlanner }) {
+function PlannerForm({ setNewPlan, newPlan, addNewPlanner, setOpen, open }) {
     
-    const [open, setOpen] = useState(false)
-
     let {id} = useParams()
     let history = useHistory()
 
@@ -25,20 +27,20 @@ function PlannerForm({ setNewPlan, newPlan, addNewPlanner }) {
 
     // fetch the individual newly created planner
     useEffect(() => {
-      fetch(`/planners/${id}`)
-      .then(res => res.json())
-      .then(planner => setNewPlan(planner))
+        fetch(`/planners/${id}`)
+        .then(res => res.json())
+        .then(planner => setNewPlan(planner))
       // debugger
-  }, [])
+    }, [])
         
         // first patch request for user to "create" planner form after the post request to join user and festival  
         const handleFormSubmit = (e) => {
-              e.preventDefault()
+            e.preventDefault()
             //   debugger
-              fetch(`/planners/${id}`, {
-                  method: 'PATCH',
-                  headers: {
-                      'Content-Type': 'application/json'
+            fetch(`/planners/${id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(formData)
             })
@@ -48,7 +50,6 @@ function PlannerForm({ setNewPlan, newPlan, addNewPlanner }) {
             setFormData(initialState)
 
             history.push(`/planner_list`)
-           
         }
         
         const handleInputChange = (e) => {
@@ -56,10 +57,7 @@ function PlannerForm({ setNewPlan, newPlan, addNewPlanner }) {
         }
         
         return(
-            <div className='container'>
-            <style>
-                @import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
-            </style>
+            <>
                 {/* if newPlan data exists, render elements, if not render null */}
                 {newPlan ?
                 <div className="festcard-header">
@@ -80,68 +78,59 @@ function PlannerForm({ setNewPlan, newPlan, addNewPlanner }) {
         <Modal
             closeIcon
             open={open}
-            trigger={<Button>Show Modal</Button>}
             onClose={() => setOpen(false)}
-            onOpen={() => setOpen(true)}
         >            
-            {/* <div className='festform'> */}
             <Modal.Content>
-            <form onSubmit={handleFormSubmit}>
-            <div >
-                <input 
-                    placeholder="What's your budget?"
-                    type="number"
-                    name="budget"
-                    value={budget}
-                    onChange={handleInputChange}
-                />
-            </div>
-            <div>
-                <label>How are you getting to the festival?
-                <select name="transportation" value={transportation}  onChange={handleInputChange}>
-                    <option value="" name="">Select an option</option>
-                   <option value="Car" name="Car">Car</option>
-                   <option value="Plane" name="Plane">Plane</option>
-                   <option value="Train" name="Train">Train</option>
-                   <option value="Boat" name="Boat">By Sea</option>
-                   <option value="Walking" name="Walking">My own two feet</option>
-                </select>
-                </label>
-            </div>
-            <div>
-                <input
-                    placeholder='Where are you staying?'
-                    type="text"
-                    name="lodging"
-                    value={lodging}
-                    onChange={handleInputChange}
-                />
-            </div>
-            <div>
-                <input
-                    placeholder="Who are you going with?" 
-                    type="text"
-                    name="friends_attending"
-                    value={friends_attending}
-                    onChange={handleInputChange}
-                />
-            </div>
-            <div>
-                <textarea
-                    placeholder="Anything else?" 
-                    type="textarea"
-                    rows="5"
+                <Form onSubmit={handleFormSubmit}>
+                    <Form.Field
+                        control={Input}
+                        label="What's your budget?"
+                        placeholder="Budget"
+                        type="number"
+                        name="budget"
+                        value={budget}
+                        onChange={handleInputChange}
+                    />
+                    <Form.Field>
+                        <label>How are you getting there?</label>
+                        <select name="transportation" value={transportation}  onChange={handleInputChange}>
+                            <option></option>
+                            <option value="Car" name="Car">Car</option>
+                            <option value="Plane" name="Plane">Plane</option>
+                            <option value="Train" name="Train">Train</option>
+                            <option value="Boat" name="Boat">By Sea</option>
+                            <option value="Walking" name="Walking">My own two feet</option>
+                        </select>
+                    </Form.Field>
+                    <Form.Field
+                        control={Input}
+                        label="Where are you staying?"
+                        placeholder="Lodging"
+                        name="lodging"
+                        value={lodging}
+                        onChange={handleInputChange}
+                    />
+                    <Form.Field
+                        control={Input}
+                        label="Who are you going with?"
+                        placeholder="People attending"
+                        name="friends_attending"
+                        value={friends_attending}
+                        onChange={handleInputChange}
+                    />
+                    <Form.Field
+                    control={TextArea}
+                    label="Anything else?"
+                    placeholder="Fill to your heart's content..."
                     name="additional_notes"
                     value={additional_notes}
                     onChange={handleInputChange}
-                />
-            </div>
+                    />
                 <button className="plannerbtn" type="submit">Add New Planner</button>
-            </form>
+                </Form>
             </Modal.Content>
-        {/* </div> */}
         </Modal>
-    </div>
+    </>
     )
 }
 

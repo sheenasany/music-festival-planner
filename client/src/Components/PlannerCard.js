@@ -1,14 +1,7 @@
-// import React, { useState } from "react";
+import React from "react";
 import UpdatePlannerForm from "./UpdatePlannerForm";
 
 function PlannerCard({ planner, planners, setPlanners }) {
-
-    // const [isUpdating, setIsUpdating] = useState(false)
-
-    // function to handle update form toggle 
-    // const handleUpdateToggle = () => {
-    //     setIsUpdating(!isUpdating);
-    // }
 
     //function to handle delete
       const onDeletePlanner = (id) => {
@@ -38,7 +31,6 @@ function PlannerCard({ planner, planners, setPlanners }) {
                 {/* updateplannerform now acts as a button for modal, shows 
                     the form instead when update planner btn is triggered */}
                   <UpdatePlannerForm planner={planner} planners={planners} setPlanners={setPlanners} /> 
-                  {/* <button className="plannerbtn" onClick={handleUpdateToggle}>Update Planner</button> */}
                   <button className="plannerbtn" onClick={handleDelete}>Delete Planner</button>
             </div>
       </>

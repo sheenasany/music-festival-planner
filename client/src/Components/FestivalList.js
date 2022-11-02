@@ -18,6 +18,16 @@ export default FestivalList;
 
 
 
+
+
+
+
+
+
+
+
+
+
 //mapping over filtered festivals and creating festival cards
 // const festivalList = allFilters.map(festival => (
 //     <FestivalListCard key={festival.id} festival={festival} /> ))
